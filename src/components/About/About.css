@@ -1,0 +1,59 @@
+.about-container {
+  position: relative;
+}
+.about-container img {
+  width: 100%;
+}
+.about-content {
+  position: absolute;
+  top: 50%;
+  right: 32%;
+  /* background-color: aquamarine; */
+  width: 450px;
+}
+.patterns {
+  margin-top: 20px;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.patterns span {
+  /* margin-right: 2rem; */
+  font-size: 85px;
+  color: #7338a4;
+  font-weight: 700;
+  height: 193px;
+}
+.patterns svg text {
+  font-family: "Tajawal";
+  letter-spacing: 10px;
+  stroke: #eab459;
+  font-size: 85px;
+  font-weight: 700;
+  stroke-width: 2;
+  animation: textAnimate 5s infinite alternate;
+  height: 180px;
+}
+@keyframes textAnimate {
+  0% {
+    stroke-dasharray: 0 50%;
+    stroke-dashoffset: 20%;
+    fill: #7338a4; 
+  }
+
+  100% {
+    stroke-dasharray: 50% 0;
+    stroke-dashoffstet: -20%;
+    fill: #7338a4;
+  }
+}
+
+.about-content p {
+  /* margin-right: 2rem; */
+  /* width: 76%; */
+  text-align: justify;
+  line-height: 32px;
+  font-size: 17px;
+}

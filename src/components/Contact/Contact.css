@@ -1,0 +1,72 @@
+/********** Contact ***********/
+.contact {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.contact-container{
+    display: flex;
+    justify-content: space-between;
+    /* gap: 20%; */
+}
+.contact-container .contact-left{
+    width: 45%;
+    margin-left: 60px;
+}
+.contact-container .contact-right{
+    width: 35%;
+}
+.text-bg {
+  background-image: url(../../assets/contact.png);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 220px;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-bg p {
+  font-size: 20px;
+}
+
+.text-bg h1 {
+  font-weight: 700;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.global {
+  text-align: right;
+  border: solid 1px #f2e5fd;
+  border-radius: 10px;
+}
+
+input.global {
+  height: 50px;
+}
+
+button.primary-btn {
+  border: none;
+  width: 50%;
+  margin-right: auto;
+}
+.contact-form-all-input-div{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4%;
+}
+.contact-form-input-div {
+  width: 48%;
+}
+.contact-form-textarea-div {
+  width: 100%;
+  margin-top: 10px;
+}

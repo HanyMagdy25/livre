@@ -1,0 +1,38 @@
+.cardVisit {
+  width: 23.5%;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+.cardVisit:nth-child(1) {
+  width: 49%;
+}
+.cardVisit img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.cardVisit-content {
+  position: absolute;
+  bottom: 25%;
+  right: 20px;
+  color: var(--color-white);
+}
+.cardVisit-content .cardVisit-content-title {
+  margin-left: 5px;
+}
+.cardVisit-content span {
+  font-size: 25px;
+}
+.cardVisit-content .rate {
+  color: #ffde00;
+}
+.cardVisit-content .rate span {
+  margin-left: 2px;
+}
+.cardVisit-content-city{
+    font-size: 14px;
+    margin-top: 4px;
+}

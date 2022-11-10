@@ -1,0 +1,80 @@
+.login-container {
+  position: relative;
+}
+.login-container img {
+  width: 100%;
+  border-radius: 20px;
+}
+.login-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(30%, -50%);
+
+  background-color: #f6ecff;
+  box-shadow: 1px 2px 12px #dbcce8c9;
+  color: var(--color-purple);
+  border-radius: 20px;
+  padding: 20px 50px;
+}
+.login-content > h2 {
+  margin-bottom: 3px;
+}
+.login-content p {
+  margin-top: 4px;
+}
+.login-content p a {
+  color: #5e5a63;
+}
+
+.add-image-div {
+  position: relative;
+}
+.add-image-div img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.add-image-div label {
+  background-color: #fafafa;
+  padding: 4px;
+  border-radius: 10px;
+  color: var(--color-purple);
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 80px;
+}
+.form-control-div {
+  margin-top: 10px;
+}
+.login .terms-div {
+  color: #6e6e6e;
+  font-size: 14px;
+  margin: 10px 0 2px 0;
+}
+.login .terms-div a {
+  color: var(--color-purple);
+  font-weight: 600;
+  font-size: 13px;
+}
+.create-account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+.create-account p a {
+  color: var(--color-purple);
+}
+.create-account .create-account-img {
+  padding: 10px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.create-account .create-account-img img {
+  width: 100%;
+}

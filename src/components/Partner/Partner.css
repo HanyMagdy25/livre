@@ -1,0 +1,84 @@
+/******** Partner ********/
+.partner {
+  margin-top: 40px;
+}
+
+.partner .d-flex {
+  flex-direction: column;
+}
+
+.partner h1 {
+  color: #111110;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--color-purple);
+}
+
+.partner p {
+  color: #433d49;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 6px;
+}
+.partner-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+.partner-card {
+  width: 50%;
+}
+
+.partner img.img-fluid {
+  width: 546px;
+  object-fit: cover;
+  object-position: center;
+  height: 560px;
+}
+
+.feature {
+  background-color: transparent;
+  border-radius: 22px;
+  border: 1px #c9b0de solid;
+  color: #373737;
+  width: 87.8%;
+  height: 205px;
+  padding: 15px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  transition: all 0.5s;
+}
+
+.feature:hover {
+  background-color: white;
+  border-color: transparent;
+}
+
+.feature .icon-bg {
+  transition: all 1s;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.feature:hover .icon-bg {
+  background-color: #ffb231;
+}
+.feature .icon-bg img {
+  width: 24px;
+}
+.feature:hover .icon-bg img {
+  filter: brightness(5);
+}
+.feature p {
+  font-size: 14px;
+}
+.mt-35 {
+  margin-top: 35px;
+}
