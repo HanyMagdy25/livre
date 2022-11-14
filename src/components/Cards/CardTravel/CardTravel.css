@@ -1,0 +1,89 @@
+.card-travel {
+  width: 23.5%;
+  margin-bottom: 20px;
+  background-color: var(--color-white);
+  border-radius: 20px;
+  padding: 10px;
+  color: #5E5A63;
+}
+.card-travel.widthThree {
+  width: 32%;
+  margin-bottom: 20px;
+  background-color: var(--color-white);
+  border-radius: 20px;
+  padding: 10px;
+  color: #5E5A63;
+}
+.card-travel-container {
+  position: relative;
+}
+.card-travel-container img {
+  border-radius: 20px;
+  width: 100%;
+}
+.card-travel-container {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.card-travel-title {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+}
+.card-travel-title span {
+  background-color: var(--color-white);
+  color: var(--color-purple);
+  border-radius: 10px;
+  padding: 1px 6px;
+}
+.card-travel-content-price-right {
+  color: var(--color-purple);
+  font-size: 18px;
+  font-weight: 500;
+}
+/* .card-travel-content-price-left {
+  color: var(--color-purple);
+} */
+.card-travel-content {
+  padding: 2px 10px 3px 10px;
+}
+.card-travel-content img {
+  width: 20px;
+  margin-left: 5px;
+}
+.card-travel-content-price {
+  display: flex;
+  justify-content: space-between;
+}
+/* ========= city ======== */
+.card-travel-content-city{
+font-size: 17px;
+margin: 5px 0;
+}
+.card-travel-content hr{
+    border: 0.5px solid #f7f7f7;
+    margin: 5px 0;
+}
+
+/*  ========= Last Div ==== */
+.card-travel-content-days{
+    color: #0091FF;
+    margin-left: 15px;
+}
+.card-travel-content-days span{
+    margin-left: 5px;
+}
+.card-travel-content-gender{
+    color: #23D582;
+    /* margin-right: 15px; */
+}
+.card-travel-content-gender.family{
+    color: #FF11B0;
+}
+.card-travel-content-gender span{
+    margin-left: 5px;
+}

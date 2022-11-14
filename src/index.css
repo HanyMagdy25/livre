@@ -99,6 +99,10 @@ button {
 .flex {
   display: flex;
 }
+.flex-justify {
+  display: flex;
+  justify-content: space-between;
+}
 .flex-center {
   display: flex;
   align-items: center;
@@ -151,4 +155,7 @@ border-radius: 0.513rem;
 }
 textarea{
   resize: none;
+}
+.my-10{
+  margin: 10px 0;
 }

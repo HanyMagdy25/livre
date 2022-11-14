@@ -1,0 +1,15 @@
+.favourite-section {
+  min-height: calc(100vh - (160px + 70px));
+}
+.favourite-container {
+  padding: 20px 40px;
+}
+.favourite-section h2 {
+  color: var(--color-purple);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.favourite-cards {
+  display: flex;
+  flex-wrap: wrap;
+}

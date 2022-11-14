@@ -1,0 +1,41 @@
+.profile-container {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+/* ========= Right Side ========= */
+.profile-right {
+  width: 24%;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 15px 10px;
+}
+.profile-right h2,
+.profile-left h2 {
+  color: var(--color-purple);
+  font-weight: 600;
+  font-size: 18px;
+}
+.profile-left h2 {
+  margin-bottom: 10px;
+}
+/* ========= Left Side ========= */
+.profile-left {
+  width: 70%;
+  /* background-color: blanchedalmond; */
+}
+.old-trips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+
+.profile-left-top,
+.profile-left-bottom {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 15px 10px;
+}
+.profile-left-bottom {
+  margin-top: 20px;
+}

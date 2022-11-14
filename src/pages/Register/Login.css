@@ -36,7 +36,8 @@
   object-fit: cover;
   border-radius: 50%;
 }
-.add-image-div label {
+.add-image-div label,
+.profile-right .add-image-div label {
   background-color: #fafafa;
   padding: 4px;
   border-radius: 10px;
@@ -44,7 +45,12 @@
   cursor: pointer;
   position: absolute;
   bottom: 10px;
+}
+.add-image-div label {
   right: 80px;
+}
+.profile-right .add-image-div label {
+  right: 160px;
 }
 .form-control-div {
   margin-top: 10px;

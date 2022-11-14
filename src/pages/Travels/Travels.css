@@ -5,6 +5,7 @@
 /* ========== filters =========== */
 .travels-filters {
   margin-top: 15px;
+  margin-bottom: 25px;
 }
 .travels-filters .filter-btns {
   display: flex;
@@ -18,4 +19,10 @@
 }
 .travels-filters .filter-btns button:hover {
   color: var(--color-purple);
+}
+/*  ========== Cards Travels ============ */
+.cards-travels-div{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
 }

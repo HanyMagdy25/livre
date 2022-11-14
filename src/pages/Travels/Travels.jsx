@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Travels.css";
 // Import Icons
 import { BsSearch } from "react-icons/bs";
+import CardTravel from "../../components/Cards/CardTravel/CardTravel";
+import { travelsData, visits } from "../../utils/data";
+import CardVisit from "../../components/Cards/CardVisit/CardVisit";
 // Names of Filters Buttons
 const CatsNames = [
   "شواطئ",
@@ -9,18 +12,24 @@ const CatsNames = [
   "واحات",
   "ملاهي",
   "متاحف",
-  "أماكن أثرية"
+  "أماكن أثرية",
 ];
 
 const Travels = () => {
+  const [category, setCategory] = useState();
+  const [activeFilter, setActiveFilter] = useState("All Categories");
 
-    // const filterResult = (cartItem) => {
-    //     const result = productsFetch?.products?.filter((curData) => {
-    //       return curData.cat.includes(cartItem);
-    //     });
-    //     setCategory(result);
-    //     setActiveFilter(cartItem);
-    //   };
+  useEffect(() => {
+    setCategory(travelsData);
+  }, []);
+
+  const filterResult = (cartItem) => {
+    const result = travelsData?.filter((curData) => {
+      return curData.cats.includes(cartItem);
+    });
+    setCategory(result);
+    setActiveFilter(cartItem);
+  };
   return (
     <div className="travels-section">
       <div className="travels-container container">
@@ -40,13 +49,13 @@ const Travels = () => {
         <div className="travels-filters">
           <div className="filter-btns">
             <button
-            //   className={`btn-blue ${
-            //     activeFilter === "All Categories" ? "btn-blue-active" : ""
-            //   }`}
-            //   onClick={() => {
-            //     setCategory(productsFetch?.products);
-            //     setActiveFilter("All Categories");
-            //   }}
+              className={`btn-blue ${
+                activeFilter === "All Categories" ? "btn-blue-active" : ""
+              }`}
+              onClick={() => {
+                setCategory(travelsData);
+                setActiveFilter("All Categories");
+              }}
             >
               كل الرحلات
             </button>
@@ -54,15 +63,24 @@ const Travels = () => {
             {CatsNames?.map((item, index) => (
               <button
                 key={index}
-                // className={`btn-blue ${
-                //   activeFilter === `${item}` ? "btn-blue-active" : ""
-                // }`}
-                // onClick={() => filterResult(`${item}`)}
+                className={`btn-blue ${
+                  activeFilter === `${item}` ? "btn-blue-active" : ""
+                }`}
+                onClick={() => filterResult(`${item}`)}
               >
                 {item}
               </button>
             ))}
           </div>
+        </div>
+        {/* ============== Start Cards ============== */}
+        <div className="cards-travels-div">
+          {category?.map((item, index) => (
+            <CardTravel item={item} key={index} />
+          ))}
+          {visits?.slice(0, 1)?.map((item, index) => (
+            <CardVisit item={item} key={index} type="w-50" />
+          ))}
         </div>
       </div>
     </div>
