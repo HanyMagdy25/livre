@@ -11,12 +11,24 @@
   display: flex;
   position: relative;
 }
+.CardTicket-img .valid {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  padding: 4px 12px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  color: var(--color-purple);
+  font-weight: 500;
+  font-size: 18px;
+}
 .CardTicket-img .qr {
   position: absolute;
   bottom: 10px;
   left: 10px;
   width: 60px;
   height: 60px;
+  object-fit: cover;
 }
 
 .CardTicket-img .ticket-img {
@@ -45,10 +57,19 @@
 }
 
 /* ====== TABLET ======== */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 990px) {
+    .CardTicket {
+        width: 100%;
+    }
+    .CardTicket-img {
+        width: 70%;
+    }
+    .CardTicket-content {
+        width: 30%;
+    }
 }
 /* ====== MOBILE ======== */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .CardTicket {
     width: 100%;
   }

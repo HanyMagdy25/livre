@@ -10,7 +10,6 @@
   font-weight: 600;
   margin-bottom: 40px;
 }
-
 .mostVisits-cards-div {
   display: flex;
   flex-wrap: wrap;
@@ -38,30 +37,39 @@
 .btn-search {
   background-color: var(--color-purple);
   color: var(--color-white);
-  box-shadow: 0 6px 17px #1111104F;
+  box-shadow: 0 6px 17px #1111104f;
 }
-.search-div{
-    display: flex;
-
+.search-div {
+  display: flex;
 }
-.search-div-item{
-    width: 400px;
-    position: relative;
-      margin-left: 10px;
+.search-div-item {
+  width: 400px;
+  position: relative;
+  margin-left: 10px;
 }
-.search-div-item input{
-    width: 100%;
-    height: 100%;
-    /* border-radius: 10px; */
-    border-radius: 0.413rem;
-    border: none;
-    outline: none;
-    padding: 0 30px;
-  
-
+.search-div-item input {
+  width: 100%;
+  height: 100%;
+  /* border-radius: 10px; */
+  border-radius: 0.413rem;
+  border: none;
+  outline: none;
+  padding: 0 30px;
 }
-.search-div-item span{
-    position: absolute;
-    top: 30%;
-    right: 8px;
+.search-div-item span {
+  position: absolute;
+  top: 30%;
+  right: 8px;
+}
+/* ====== TABLET ======== */
+@media screen and (max-width: 990px) {
+  .search-div-item {
+    width: 300px;
+  }
+}
+/* ====== MOBILE ======== */
+@media screen and (max-width: 600px) {
+  .search-div-item {
+    width: 200px;
+  }
 }

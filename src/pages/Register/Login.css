@@ -84,3 +84,35 @@
 .create-account .create-account-img img {
   width: 100%;
 }
+
+@media screen and (max-width: 990px) {
+  .login {
+    min-height: calc(100vh - (160px + 70px));
+  }
+  .login-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+  }
+  .login-container .login-img {
+    width: 100%;
+    border-radius: 5px;
+    height: 820px;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login-content {
+    width: 95%;
+  }
+}

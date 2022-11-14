@@ -14,15 +14,9 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  /* margin-left: auto;
-  margin-right: auto;
-  max-width: 1240px;
-  width: 100%; */
   position: relative;
 }
 .navbar-logo {
-  /* margin-left: 100px; */
-  /* height: 100%; */
   display: flex;
   align-items: center;
   font-family: sans-serif;
@@ -36,8 +30,6 @@
   display: flex;
   align-items: center;
   color: var(--color-purple);
-  /* padding: 0px 15px; */
-  /* border-radius: 10px; */
 }
 .nav-menu {
   display: flex;
@@ -63,7 +55,7 @@
   margin-left: 15px;
   color: var(--color-purple);
 }
-/* ======== media ======= */
+/* ======== Media Mobile ======= */
 @media screen and (max-width: 1050px) {
   .nav-menu {
     display: flex;
@@ -79,7 +71,7 @@
     overflow-x: hidden;
   }
   .nav-menu.active {
-    background-color: var(--color-navbar);
+    background-color: var(--color-purple);
     left: 0px;
     opacity: 1;
     transition: all 0.5s ease;
@@ -91,52 +83,44 @@
     padding: 1rem 4rem;
     width: 100%;
     display: table;
+    color: var(--color-white);
+    transition: all 0.2s ease-in;
   }
   .nav-links:hover {
-    background-color: transparent;
-    color: var(--color-white);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--color-white);
+    transform: scale(1.1);
   }
   .logo-container {
     width: 100px;
   }
   .navbar-logo {
     position: absolute;
-    top: 12px;
+    top: 20px;
     right: 20px;
   }
   .menu-icon {
     display: block;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 20px;
     /* transform: translate(-100%, 60%); */
     font-size: 1.8rem;
     cursor: pointer;
-    color: var(--color-white);
+    color: var(--color-purple);
   }
-}
-
-/* ======== Tablet ======== */
-@media screen and (max-width: 1000px) {
-  .payment-section-container {
-    padding: 55px;
+  .btn-login-div {
+    position: absolute;
+    top: 15px;
+    left: 60px;
   }
-  .cardPay {
-    width: 31%;
-  }
-  .cardPay h1 {
-    font-size: 24px;
-    line-height: 2rem;
-  }
-  .cardPay p {
-    font-size: 16px;
+  .navbar-logo img {
+    width: 90px;
+    object-fit: cover;
   }
   .navbar {
     padding: 0 0px;
   }
-  .navbar-all-sections {
-    margin-right: 10px;
+  .btn-login-div span {
+    margin-left: 8px;
+    color: var(--color-purple);
   }
 }

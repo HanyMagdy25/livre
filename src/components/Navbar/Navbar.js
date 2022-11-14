@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // Import React Router Dom
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //  import CSS File
 import "./Navbar.css";
 // Import Data From Utils
@@ -16,6 +16,8 @@ const Navbar = () => {
 
   const handleClick = () => setClick(!click);
 
+  const navigate = useNavigate();
+
   return (
     <>
       <nav className="navbar">
@@ -27,7 +29,9 @@ const Navbar = () => {
           </div>
 
           <div className="menu-icon" onClick={handleClick}>
-            <span>{click ? <AiOutlineClose /> : <AiOutlineMenu />}</span>
+            <span className="flex">
+              {click ? <AiOutlineClose /> : <AiOutlineMenu />}
+            </span>
           </div>
 
           <ul className={click ? "nav-menu active " : "nav-menu"}>
@@ -67,7 +71,12 @@ const Navbar = () => {
                 <BsTwitter />
               </a>{" "}
             </span>
-            <button className="btn btn-purple">تسجيل دخول</button>
+            <button
+              onClick={() => navigate("/login")}
+              className="btn btn-purple"
+            >
+              تسجيل دخول
+            </button>
           </div>
         </div>
       </nav>

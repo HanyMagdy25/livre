@@ -8,6 +8,7 @@ const CardTicket = () => {
         <div className='CardTicket-img'>
             <img src={camping} className="ticket-img" alt="ticket" loading='lazy'/>
             <img src={qr} className="qr" alt="qr" loading='lazy'/>
+            <span className='valid'>Valid</span>
 
         </div>
         <div className='CardTicket-content'>

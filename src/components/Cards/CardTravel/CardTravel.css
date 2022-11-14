@@ -87,3 +87,16 @@ margin: 5px 0;
 .card-travel-content-gender span{
     margin-left: 5px;
 }
+
+/* ====== TABLET ======== */
+@media screen and (max-width: 990px) {
+  .card-travel {
+    width: 49%;
+  }
+}
+/* ====== MOBILE ======== */
+@media screen and (max-width: 600px) {
+  .card-travel {
+    width: 100%;
+  }
+}

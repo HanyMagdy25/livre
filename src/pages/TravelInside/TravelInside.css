@@ -104,7 +104,7 @@
 .profile-right .second-step-inputs .input-div input {
   width: 100%;
   outline: none;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #eeeeee;
   padding: 12px 25px 12px 15px;
   border-radius: 10px;
 }
@@ -154,4 +154,22 @@
   display: flex;
   justify-content: space-between;
   gap: 2%;
+}
+
+/* ====== TABLET ======== */
+@media screen and (max-width: 990px) {
+  .travel-inside-container {
+    padding: 10px 10px;
+    flex-wrap: wrap;
+  }
+  .travel-inside-right {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .travel-inside-left {
+    width: 100%;
+  }
+}
+/* ====== MOBILE ======== */
+@media screen and (max-width: 600px) {
 }

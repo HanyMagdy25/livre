@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login-container container">
-        <img src={loginImg} alt="login" loading="lazy" />
+        <img src={loginImg} className="login-img" alt="login" loading="lazy" />
         <div className="login-content">
           <h2>قم بإنشاء حسابك الآن</h2>
           <p>
