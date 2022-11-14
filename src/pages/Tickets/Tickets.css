@@ -1,0 +1,29 @@
+.tickets-section {
+    margin: 15px 0;
+}
+.tickets-container {
+  padding: 20px 40px;
+}
+.tickets-container h2 {
+  color: var(--color-purple);
+  font-weight: 600;
+  font-size: 26px;
+}
+.tickets-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+  /* background-color: brown; */
+}
+/* ====== TABLET ======== */
+@media screen and (max-width:1000px) {
+    
+}
+/* ====== MOBILE ======== */
+@media screen and (max-width:700px) {
+    .tickets-container {
+        padding: 20px 10px;
+      }
+}

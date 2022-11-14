@@ -12,6 +12,7 @@ import Travels from "./pages/Travels/Travels";
 import TravelInside from "./pages/TravelInside/TravelInside";
 import Profile from "./pages/Profile/Profile";
 import Favourite from "./pages/Favourite/Favourite";
+import Tickets from "./pages/Tickets/Tickets";
 
 function App() {
   function ScrollToTop() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/travel/:id" element={<TravelInside />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/favourite" element={<Favourite />} />
+          <Route path="/tickets" element={<Tickets />} />
         </Routes>
         <Footer />
       </BrowserRouter>
