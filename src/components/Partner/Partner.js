@@ -12,8 +12,8 @@ const Partner = () => {
   return (
     <section className="partner" id="partner">
       <div className="container">
-        <div className="flex main">
-          <div className="col-lg-6 col-md-12">
+        <div className="flex partner-main">
+          <div className="partner-right">
             <div className="d-flex">
               <h1>كن شريكا معنا</h1>
               <p>
@@ -72,7 +72,7 @@ const Partner = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 d-flex align-items-end justify-content-end">
+          <div className="partner-left d-flex align-items-end justify-content-end">
             <img className="img-fluid" src={services} alt="services" loading="lazy"/>
           </div>
         </div>

@@ -40,7 +40,7 @@
   0% {
     stroke-dasharray: 0 50%;
     stroke-dashoffset: 20%;
-    fill: #7338a4; 
+    fill: #7338a4;
   }
 
   100% {
@@ -51,9 +51,48 @@
 }
 
 .about-content p {
-  /* margin-right: 2rem; */
-  /* width: 76%; */
   text-align: justify;
   line-height: 32px;
   font-size: 17px;
+}
+
+/* ====== TABLET ======== */
+@media screen and (max-width: 990px) {
+  .about-content {
+    position: absolute;
+    top: 50%;
+    right: 32%;
+    width: 310px;
+  }
+  .patterns span {
+    font-size: 50px;
+    height: 110px;
+  }
+  .patterns svg text {
+    font-size: 65px;
+  }
+  .patterns {
+    width: 100%;
+  }
+  .about-content p {
+    line-height: 1.4;
+    font-size: 17px;
+  }
+}
+/* ====== MOBILE ======== */
+@media screen and (max-width: 600px) {
+  .about-content {
+    width: 240px;
+  }
+  .patterns span {
+    font-size: 40px;
+    height: 90px;
+  }
+  .patterns svg text {
+    font-size: 50px;
+  }
+  .about-content p {
+    line-height: 1.2;
+    font-size: 15px;
+  }
 }
