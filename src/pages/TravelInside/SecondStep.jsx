@@ -4,7 +4,7 @@ import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { AiOutlinePlus ,AiOutlineMinus,AiOutlineUser} from "react-icons/ai";
 import { BsCalendarMinus } from "react-icons/bs";
 
-const SecondStep = ({ oneTravel,setToggle }) => {
+const SecondStep = ({ oneEvent,setToggle }) => {
   return (
     <>
       <div className="flex-justify second-step-top">
@@ -39,7 +39,7 @@ const SecondStep = ({ oneTravel,setToggle }) => {
       </div>
       <div className="travel-inside-left-price">
         <span>السعر</span>
-        <h2>{oneTravel.price} ريال</h2>
+        <h2>{oneEvent?.price} ريال</h2>
       </div>
       <div>
         <button className="btn btn-purple btn-w-100" onClick={()=>setToggle(3)}>الدفع</button>

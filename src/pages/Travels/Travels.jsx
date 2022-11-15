@@ -15,13 +15,30 @@ const CatsNames = [
   "أماكن أثرية",
 ];
 
-const Travels = () => {
-  const [category, setCategory] = useState();
+const Travels = ({token}) => {
+  const [category, setCategory] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All Categories");
+  const [eventsApi, setEventsApi] = useState([]);
 
   useEffect(() => {
-    setCategory(travelsData);
-  }, []);
+    fetch(`https://livre.softwarecloud2.com/api/v1/events/events`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Authorization": `${token}`,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setEventsApi(data);
+      });
+    }, [token]);
+
+  useEffect(() => {
+    setCategory(eventsApi?.data?.events);
+  }, [eventsApi?.data?.events]);
 
   const filterResult = (cartItem) => {
     const result = travelsData?.filter((curData) => {
@@ -30,6 +47,9 @@ const Travels = () => {
     setCategory(result);
     setActiveFilter(cartItem);
   };
+
+  
+    console.log("Events: ",eventsApi)
   return (
     <div className="travels-section">
       <div className="travels-container container">

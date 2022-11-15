@@ -39,3 +39,17 @@
 .profile-left-bottom {
   margin-top: 20px;
 }
+
+@media screen and (max-width:990px) {
+  .profile-container {
+    padding: 20px 10px;
+    flex-wrap: wrap;
+  }
+  .profile-right {
+    width: 100%;
+  }
+  .profile-left {
+    width: 100%;
+    /* background-color: blanchedalmond; */
+  }
+}

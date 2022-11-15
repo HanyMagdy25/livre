@@ -93,10 +93,16 @@ margin: 5px 0;
   .card-travel {
     width: 49%;
   }
+  .card-travel.widthThree {
+    width: 49%;
+  }
 }
 /* ====== MOBILE ======== */
 @media screen and (max-width: 600px) {
   .card-travel {
+    width: 100%;
+  }
+  .card-travel.widthThree {
     width: 100%;
   }
 }

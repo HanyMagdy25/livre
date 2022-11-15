@@ -75,4 +75,7 @@
   .cardVisit:nth-child(1) {
     width: 100%;
   }
+  .cardVisit.w-50 {
+    width: 100%;
+  }
 }

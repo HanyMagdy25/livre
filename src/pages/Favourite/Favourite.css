@@ -14,3 +14,8 @@
   display: flex;
   flex-wrap: wrap;
 }
+@media screen and (max-width:990px) {
+  .favourite-container {
+    padding: 20px 10px;
+  }
+}

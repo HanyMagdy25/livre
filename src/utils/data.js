@@ -96,8 +96,10 @@ export const travelsData = [
     description:
       "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
     date: "20/نوفمبر",
-    image:
+    image: [
       "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881398/hiking_ztkibo.png",
+      "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881730/camping_t65fwn.png",
+    ],
   },
   {
     id: "2",
@@ -107,13 +109,15 @@ export const travelsData = [
     cats: ["ملاهي", "شواطئ"],
     restDays: "6 أيام",
     description:
-    "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
+      "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
 
     rate: 5,
     price: 600,
     date: "30/نوفمبر",
-    image:
+    image: [
       "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881398/hiking_ztkibo.png",
+      "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881730/camping_t65fwn.png",
+    ],
   },
   {
     id: "3",
@@ -123,12 +127,14 @@ export const travelsData = [
     restDays: "5 أيام",
     rate: 5,
     description:
-    "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
+      "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
     cats: ["واحات", "شواطئ"],
     price: 300,
     date: "10/نوفمبر",
-    image:
+    image: [
       "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881398/hiking_ztkibo.png",
+      "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881730/camping_t65fwn.png",
+    ],
   },
   {
     id: "4",
@@ -136,15 +142,17 @@ export const travelsData = [
     city: "جدة",
     gender: "شباب",
     description:
-    "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
+      "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
 
     restDays: "5 أيام",
     rate: 5,
     price: 300,
     cats: ["أماكن أثرية", "شواطئ"],
     date: "10/نوفمبر",
-    image:
+    image: [
       "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881398/hiking_ztkibo.png",
+      "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881730/camping_t65fwn.png",
+    ],
   },
   {
     id: "5",
@@ -153,14 +161,16 @@ export const travelsData = [
     rate: 5,
     gender: "شباب",
     description:
-    "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
+      "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
 
     cats: ["الصحراء والبر", "شواطئ"],
     restDays: "5 أيام",
     price: 300,
     date: "10/نوفمبر",
-    image:
+    image: [
       "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881398/hiking_ztkibo.png",
+      "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881730/camping_t65fwn.png",
+    ],
   },
   {
     id: "6",
@@ -168,14 +178,16 @@ export const travelsData = [
     city: "جدة",
     gender: "شباب",
     description:
-    "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
+      "خط سير الرحلة التي تغطي أفضل الأنشطة وجولات بالي مثل ؛ ركوب المياه البيضاء, الرياضات",
 
     restDays: "5 أيام",
     rate: 5,
     cats: ["ملاهي", "متاحف"],
     price: 300,
     date: "10/نوفمبر",
-    image:
+    image: [
       "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881398/hiking_ztkibo.png",
+      "https://res.cloudinary.com/dia1kfg4m/image/upload/v1667881730/camping_t65fwn.png",
+    ],
   },
 ];

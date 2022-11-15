@@ -159,3 +159,6 @@ textarea{
 .my-10{
   margin: 10px 0;
 }
+.swiper{
+  border-radius: 30px !important;
+}

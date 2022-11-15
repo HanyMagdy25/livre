@@ -2,15 +2,19 @@ import React from "react";
 // Icons
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IoLocationOutline } from "react-icons/io5";
-import {  AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { BsHash } from "react-icons/bs";
+// Images
+import visa from "../../assets/visa.png";
+import applePay from "../../assets/apple-pay.png";
+import mada from "../../assets/mada.png";
 
-const ThirdStep = ({ oneTravel,setToggle }) => {
+const ThirdStep = ({ oneEvent, setToggle }) => {
   return (
     <>
       <div className="flex-justify second-step-top">
         <h3>طريقة الدفع</h3>
-        <span className="flex-center back" onClick={()=>setToggle(2)}>
+        <span className="flex-center back" onClick={() => setToggle(2)}>
           <HiOutlineArrowNarrowLeft />
         </span>
       </div>
@@ -22,7 +26,7 @@ const ThirdStep = ({ oneTravel,setToggle }) => {
             <span className="flex-center">
               <IoLocationOutline />
             </span>{" "}
-            {oneTravel.city}{" "}
+            {oneEvent?.location}{" "}
           </div>
         </div>
         <h3>6 أيام</h3>
@@ -30,9 +34,15 @@ const ThirdStep = ({ oneTravel,setToggle }) => {
         <h3>من ذوي الإحتياجات الخاصه 1</h3>
       </div>
       <div className="flex-justify visa-div">
-        <div>visa</div>
-        <div>visa</div>
-        <div>visa</div>
+        <div className="visa">
+          <img src={visa} alt="visa" />
+        </div>
+        <div className="apple">
+          <img src={applePay} alt="apple" />
+        </div>
+        <div className="mada">
+          <img src={mada} alt="mada" />
+        </div>
       </div>
       <div className="second-step-inputs">
         <div className="input-div">
@@ -58,7 +68,7 @@ const ThirdStep = ({ oneTravel,setToggle }) => {
       </div>
       <div className="travel-inside-left-price">
         <span>السعر</span>
-        <h2>{oneTravel.price} ريال</h2>
+        <h2>{oneEvent?.price} ريال</h2>
       </div>
       <div>
         <button className="btn btn-purple btn-w-100">الدفع</button>

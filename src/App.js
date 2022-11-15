@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 // CSS File
 import "./App.css";
@@ -13,8 +13,15 @@ import TravelInside from "./pages/TravelInside/TravelInside";
 import Profile from "./pages/Profile/Profile";
 import Favourite from "./pages/Favourite/Favourite";
 import Tickets from "./pages/Tickets/Tickets";
+// URL
+const URL ="https://livre.softwarecloud2.com";
 
 function App() {
+
+  const [token, setToken] = useState(
+    "opHqBzHqDukBFxdpY4g63K3S54dWD17ySlzBlAPqh1gj2DB0Vg3km7F09R17wK7Y"
+  );
+
   function ScrollToTop() {
     const { pathname } = useLocation();
     useEffect(() => {
@@ -28,12 +35,12 @@ function App() {
         <ScrollToTop />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/livre" element={<Home />} />
+          <Route path="/" element={<Home token={token} URL={URL}/>} />
+          <Route path="/livre" element={<Home token={token} URL={URL}/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/travels" element={<Travels />} />
-          <Route path="/travel/:id" element={<TravelInside />} />
+          <Route path="/travels" element={<Travels token={token} URL={URL}/>} />
+          <Route path="/travel/:id" element={<TravelInside token={token} URL={URL} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/favourite" element={<Favourite />} />
           <Route path="/tickets" element={<Tickets />} />

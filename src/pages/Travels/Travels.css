@@ -1,3 +1,6 @@
+.travels-section {
+  min-height: calc(100vh - (70px + 160px));
+}
 .travels-container {
   margin-top: 20px;
 }
