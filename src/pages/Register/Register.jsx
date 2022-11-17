@@ -1,14 +1,52 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/login.png";
 import "./Login.css";
 import { BsArrowLeft } from "react-icons/bs";
 import camImage from "../../assets/cam.png";
 import googleImg from "../../assets/google.png";
-const Login = () => {
+const Login = ({ token, URL }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [photo, setPhoto] = useState();
+  const [password, setPassword] = useState("");
+  const [city_id, setCity_id] = useState("");
+  const [isPending, setIsPending] = useState(false);
   const [showPicImg, setShowPicImg] = useState(null);
+  const navigate = useNavigate();
   const onImageChangeImg = (e) => {
     setShowPicImg(URL?.createObjectURL(e.target.files[0]));
+  };
+
+  const handRegister = (e) => {
+    e.preventDefault();
+    const blog = { name, email, phone, city_id, password };
+
+    setIsPending(true);
+
+    let formData = new FormData();
+    for (const [key, value] of Object.entries(blog)) {
+      formData.append(key, value);
+    }
+    formData.append("photo", showPicImg);
+    fetch(`${URL}/api/v1/client/register`, {
+      method: "POST",
+      body: formData,
+      redirect: 'follow',
+      headers: {
+        "Content-Type": "application/json",
+        "X-Authorization": `${token}`,
+      },
+    })
+      .then((data) => data.json())
+      .then((res) => {
+        console.log("res", res);
+        setIsPending(false);
+        if (res.status === "success") {
+          navigate("/login");
+        }
+      });
   };
   return (
     <div className="login">
@@ -45,6 +83,7 @@ const Login = () => {
                 type="tel"
                 className="form-control global"
                 placeholder="رقم الجوال"
+                onChange={(e)=>setPhone(e.target.value)}
               />
             </div>
             <div className="form-control-div">
@@ -52,6 +91,7 @@ const Login = () => {
                 type="text"
                 className="form-control global"
                 placeholder="الأسم"
+                onChange={(e)=>setName(e.target.value)}
               />
             </div>
             <div className="form-control-div">
@@ -59,6 +99,7 @@ const Login = () => {
                 type="email"
                 className="form-control global"
                 placeholder="البريد الإلكتروني"
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </div>
             <div className="form-control-div">
@@ -66,6 +107,7 @@ const Login = () => {
                 type="city"
                 className="form-control global"
                 placeholder="المدينة"
+                onChange={(e)=>setCity_id(e.target.value)}
               />
             </div>
             <div className="form-control-div">
@@ -73,6 +115,7 @@ const Login = () => {
                 type="password"
                 className="form-control global"
                 placeholder="كلمة السر"
+                onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
           </div>
@@ -86,7 +129,9 @@ const Login = () => {
           </div>
           {/* ============= End الشروط و الأحكام ============ */}
           <div>
-            <button className="btn btn-purple btn-w-100">إنشاء حساب</button>
+            <button className="btn btn-purple btn-w-100" onClick={handRegister}>
+              إنشاء حساب
+            </button>
           </div>
           {/* ============= Start أو قم بإنشاء الحساب عن طريق =========== */}
           <div className="create-account">

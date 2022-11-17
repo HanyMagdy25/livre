@@ -14,14 +14,18 @@
   display: flex;
   flex-wrap: wrap;
 }
-.travels-filters .filter-btns button {
+.travels-filters .filter-btns a {
   border: none;
   color: #433d49;
   margin-left: 15px;
   font-size: 16px;
+  font-weight: 500;
 }
-.travels-filters .filter-btns button:hover {
+.travels-filters .filter-btns a:hover {
   color: var(--color-purple);
+}
+.btn-blue-active {
+  color: red !important;
 }
 /*  ========== Cards Travels ============ */
 .cards-travels-div {

@@ -34,7 +34,7 @@ const TravelInside = ({ token }) => {
   // const oneTravel = travelsData.find((a) => a.id === param.id);
   // /////////
   useEffect(() => {
-    fetch(`https://livre.softwarecloud2.com/api/v1/events/event/39`, {
+    fetch(`https://livre.softwarecloud2.com/api/v1/events/event/${param.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
