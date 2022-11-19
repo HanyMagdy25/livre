@@ -3,8 +3,11 @@ import React from "react";
 import { BsCalendarMinus } from "react-icons/bs";
 import { BsClock } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
-const FirstStep = ({ oneEvent, setToggle }) => {
+const FirstStep = ({ oneEvent, setToggle, userOfLivre }) => {
+  const navigate = useNavigate();
+  // console.log("userOfLivre",userOfLivre);
   return (
     <>
       {oneEvent && (
@@ -39,12 +42,21 @@ const FirstStep = ({ oneEvent, setToggle }) => {
             <h2>{oneEvent.price} ريال</h2>
           </div>
           <div>
-            <button
-              className="btn btn-purple btn-w-100"
-              onClick={() => setToggle(2)}
-            >
-              حجز
-            </button>
+            {userOfLivre ? (
+              <button
+                className="btn btn-purple btn-w-100"
+                onClick={() => setToggle(2)}
+              >
+                حجز
+              </button>
+            ) : (
+              <button
+                className="btn btn-purple btn-w-100"
+                onClick={() => navigate("/login")}
+              >
+                حجز
+              </button>
+            )}
           </div>
         </>
       )}

@@ -8,11 +8,15 @@ import { navTitle } from "../../utils/data";
 // Import Icons
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
+import { MdKeyboardArrowDown } from "react-icons/md";
 // Import Images
 import logo from "../../assets/logo.png";
+import profileImg from "../../assets/profile.png";
+import Dropdown from "./Dropdown";
 
-const Navbar = () => {
+const Navbar = ({ userOfLivre }) => {
   const [click, setClick] = useState(false);
+  const [dropNav, setDropNav] = useState(false);
 
   const handleClick = () => setClick(!click);
 
@@ -71,12 +75,20 @@ const Navbar = () => {
                 <BsTwitter />
               </a>{" "}
             </span>
-            <button
-              onClick={() => navigate("/login")}
-              className="btn btn-purple"
-            >
-              تسجيل دخول
-            </button>
+            {!userOfLivre ? (
+              <button
+                onClick={() => navigate("/login")}
+                className="btn btn-purple"
+              >
+                تسجيل دخول
+              </button>
+            ) : (
+              <div className="profile-navbar" onClick={()=>setDropNav(!dropNav)}>
+                <img src={profileImg} alt="profile-img" loading="lazy" />
+                <span className="flex-center"><MdKeyboardArrowDown/></span>
+                {dropNav && <Dropdown />}
+              </div>
+            )}
           </div>
         </div>
       </nav>

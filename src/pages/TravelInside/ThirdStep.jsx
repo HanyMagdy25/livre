@@ -9,7 +9,7 @@ import visa from "../../assets/visa.png";
 import applePay from "../../assets/apple-pay.png";
 import mada from "../../assets/mada.png";
 
-const ThirdStep = ({ oneEvent, setToggle }) => {
+const ThirdStep = ({ oneEvent, setToggle,countDis }) => {
   return (
     <>
       <div className="flex-justify second-step-top">
@@ -31,7 +31,7 @@ const ThirdStep = ({ oneEvent, setToggle }) => {
         </div>
         <h3>6 أيام</h3>
         <h3>عدد الأفراد 2</h3>
-        <h3>من ذوي الإحتياجات الخاصه 1</h3>
+        <h3>من ذوي الإحتياجات الخاصه {countDis}</h3>
       </div>
       <div className="flex-justify visa-div">
         <div className="visa">
@@ -59,10 +59,10 @@ const ThirdStep = ({ oneEvent, setToggle }) => {
         </div>
         <div className="two-inputs">
           <div className="input-div">
-            <input type="text" placeholder="رقم البطاقة" />
+            <input type="text" placeholder="رقم السري" />
           </div>
           <div className="input-div">
-            <input type="text" placeholder="رقم البطاقة" />
+            <input type="text" placeholder="صالحة حتى" />
           </div>
         </div>
       </div>

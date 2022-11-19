@@ -17,6 +17,16 @@ import Tickets from "./pages/Tickets/Tickets";
 const URL ="https://livre.softwarecloud2.com";
 
 function App() {
+  // to check if there is user in loacal storage 
+  const [userOfLivre, setUserOfLivre] = useState(null)
+  useEffect(() => {
+    setUserOfLivre(
+      localStorage.getItem("user-livre")
+        ? JSON.parse(localStorage.getItem("user-livre"))
+        : null
+    );
+  }, []);
+  // console.log("66",userOfLivre);
 
   const [token, setToken] = useState(
     "opHqBzHqDukBFxdpY4g63K3S54dWD17ySlzBlAPqh1gj2DB0Vg3km7F09R17wK7Y"
@@ -33,16 +43,16 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <ScrollToTop />
-        <Navbar />
+        <Navbar userOfLivre={userOfLivre}/>
         <Routes>
           <Route path="/" element={<Home token={token} URL={URL}/>} />
           <Route path="/livre" element={<Home token={token} URL={URL}/>} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login token={token} />} />
           <Route path="/register" element={<Register token={token} URL={URL}/>} />
           <Route path="/travels" element={<Travels token={token} URL={URL}/>} />
           <Route path="/travels/:id" element={<Travels token={token} URL={URL}/>} />
-          <Route path="/travel/:id" element={<TravelInside token={token} URL={URL} />} />
-          <Route path="/profile" element={<Profile token={token} URL={URL} />} />
+          <Route path="/travel/:id" element={<TravelInside token={token} URL={URL} userOfLivre={userOfLivre} />} />
+          <Route path="/profile" element={<Profile token={token} URL={URL} userOfLivre={userOfLivre}/>} />
           <Route path="/favourite" element={<Favourite token={token} URL={URL}/>} />
           <Route path="/tickets" element={<Tickets />} />
         </Routes>

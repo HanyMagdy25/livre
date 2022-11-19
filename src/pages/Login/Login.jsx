@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+// Images
 import loginImg from "../../assets/login.png";
+import googleImg from "../../assets/google.png";
 // import "./Login.css";
 import { BsArrowLeft } from "react-icons/bs";
-import googleImg from "../../assets/google.png";
-const Login = () => {
+// URL
+const URL_HOST = "https://livre.softwarecloud2.com";
+
+const Login = ({token,setUserOfLivre}) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    fetch(`${URL_HOST}/api/v1/client/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Authorization": `${token}`,
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+
+        if (data.status === "success") {
+          window.location.href = "/";
+          setUserOfLivre(localStorage.setItem("user-livre", JSON.stringify(data?.data?.client)))
+        } else {
+          alert(data.message);
+        }
+      });
+  };
   return (
     <div className="login">
       <div className="login-container container">
@@ -22,9 +53,10 @@ const Login = () => {
           <div>
             <div className="form-control-div">
               <input
-                type="tel"
+                 type="email"
                 className="form-control global"
-                placeholder="رقم الجوال"
+                placeholder="البريد الإلكتروني"
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </div>
             <div className="form-control-div">
@@ -32,12 +64,13 @@ const Login = () => {
                 type="password"
                 className="form-control global"
                 placeholder="كلمة السر"
+                onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
           </div>
           {/* ============= End Inputs ============ */}
           <div>
-            <button className="btn btn-purple btn-w-100">تسجيل الدخول</button>
+            <button className="btn btn-purple btn-w-100" onClick={handleLogin}>تسجيل الدخول</button>
           </div>
           {/* ============= Start تسجيل الدخول  =========== */}
           <div className="create-account">

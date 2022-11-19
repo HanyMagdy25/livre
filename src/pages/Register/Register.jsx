@@ -5,11 +5,12 @@ import "./Login.css";
 import { BsArrowLeft } from "react-icons/bs";
 import camImage from "../../assets/cam.png";
 import googleImg from "../../assets/google.png";
-const Login = ({ token, URL }) => {
+// URL
+const URL_HOST ="https://livre.softwarecloud2.com";
+const Login = ({ token }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [photo, setPhoto] = useState();
   const [password, setPassword] = useState("");
   const [city_id, setCity_id] = useState("");
   const [isPending, setIsPending] = useState(false);
@@ -18,8 +19,8 @@ const Login = ({ token, URL }) => {
   const onImageChangeImg = (e) => {
     setShowPicImg(URL?.createObjectURL(e.target.files[0]));
   };
-
-  const handRegister = (e) => {
+// console.log(showPicImg)
+  const handleRegister = (e) => {
     e.preventDefault();
     const blog = { name, email, phone, city_id, password };
 
@@ -30,14 +31,14 @@ const Login = ({ token, URL }) => {
       formData.append(key, value);
     }
     formData.append("photo", showPicImg);
-    fetch(`${URL}/api/v1/client/register`, {
+    fetch(`${URL_HOST}/api/v1/client/register`, {
       method: "POST",
       body: formData,
-      redirect: 'follow',
       headers: {
         "Content-Type": "application/json",
         "X-Authorization": `${token}`,
       },
+      // redirect: 'follow',
     })
       .then((data) => data.json())
       .then((res) => {
@@ -45,6 +46,8 @@ const Login = ({ token, URL }) => {
         setIsPending(false);
         if (res.status === "success") {
           navigate("/login");
+        }else {
+          alert(res.message);
         }
       });
   };
@@ -129,7 +132,7 @@ const Login = ({ token, URL }) => {
           </div>
           {/* ============= End الشروط و الأحكام ============ */}
           <div>
-            <button className="btn btn-purple btn-w-100" onClick={handRegister}>
+            <button className="btn btn-purple btn-w-100" onClick={handleRegister}>
               إنشاء حساب
             </button>
           </div>

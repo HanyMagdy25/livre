@@ -15,16 +15,17 @@ import Spinner from "../../components/Spinner/Spinner";
 // URL
 // const URL = "https://livre.softwarecloud2.com";
 
-const Profile = ({ token, URL }) => {
+const Profile = ({ token, URL ,userOfLivre}) => {
   const [profile, setProfile] = useState([]);
   const [test, setTest] = useState([]);
   const [feedbacks, setFeedbacks] = useState([]);
   const [reservation, setReservation] = useState([]);
   const [loading, setLoading] = useState(true);
+  // console.log(userOfLivre?.id)
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await fetch(`${URL}/api/v1/client/profile/15`, {
+      const response = await fetch(`${URL}/api/v1/client/profile/${userOfLivre?.id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +39,7 @@ const Profile = ({ token, URL }) => {
     };
 
     fetchProfile();
-  }, [URL, token]);
+  }, [URL, token, userOfLivre?.id]);
 
   useEffect(() => {
     const fetchReservation = async () => {
@@ -72,8 +73,8 @@ const Profile = ({ token, URL }) => {
         // setLoading(false);
       });
   }, [URL, token]);
-  console.log("profile", profile);
-  console.log("Feedbacks", feedbacks);
+  // console.log("profile", profile);
+  // console.log("Feedbacks", feedbacks);
   console.log("Reservation", reservation);
   return (
     <>
