@@ -49,12 +49,12 @@ function App() {
           <Route path="/livre" element={<Home token={token} URL={URL}/>} />
           <Route path="/login" element={<Login token={token} />} />
           <Route path="/register" element={<Register token={token} URL={URL}/>} />
-          <Route path="/travels" element={<Travels token={token} URL={URL}/>} />
+          <Route path="/travels" element={<Travels token={token} URL={URL} userOfLivre={userOfLivre} />} />
           <Route path="/travels/:id" element={<Travels token={token} URL={URL}/>} />
           <Route path="/travel/:id" element={<TravelInside token={token} URL={URL} userOfLivre={userOfLivre} />} />
           <Route path="/profile" element={<Profile token={token} URL={URL} userOfLivre={userOfLivre}/>} />
-          <Route path="/favourite" element={<Favourite token={token} URL={URL}/>} />
-          <Route path="/tickets" element={<Tickets />} />
+          <Route path="/favourite" element={<Favourite token={token} URL={URL} userOfLivre={userOfLivre} />}/>
+          <Route path="/tickets" element={<Tickets token={token} URL={URL} userOfLivre={userOfLivre}/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

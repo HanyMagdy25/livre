@@ -9,12 +9,18 @@ import visa from "../../assets/visa.png";
 import applePay from "../../assets/apple-pay.png";
 import mada from "../../assets/mada.png";
 
-const ThirdStep = ({ oneEvent, setToggle,countDis }) => {
+const ThirdStep = ({ oneEvent, setToggle, count,countDis, setCountDis }) => {
   return (
     <>
       <div className="flex-justify second-step-top">
         <h3>طريقة الدفع</h3>
-        <span className="flex-center back" onClick={() => setToggle(2)}>
+        <span
+          className="flex-center back"
+          onClick={() => {
+            setToggle(2);
+            setCountDis(0);
+          }}
+        >
           <HiOutlineArrowNarrowLeft />
         </span>
       </div>
@@ -30,7 +36,7 @@ const ThirdStep = ({ oneEvent, setToggle,countDis }) => {
           </div>
         </div>
         <h3>6 أيام</h3>
-        <h3>عدد الأفراد 2</h3>
+        <h3>عدد الأفراد {count}</h3>
         <h3>من ذوي الإحتياجات الخاصه {countDis}</h3>
       </div>
       <div className="flex-justify visa-div">

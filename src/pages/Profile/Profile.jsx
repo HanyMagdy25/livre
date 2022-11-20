@@ -6,59 +6,68 @@ import { BsCamera } from "react-icons/bs";
 import { AiOutlineMobile, AiOutlineUser } from "react-icons/ai";
 import { MdAlternateEmail, MdLocationCity } from "react-icons/md";
 import { HiOutlineLockClosed } from "react-icons/hi";
-// Images
-import profileImage from "../../assets/profile.png";
 // Components
 import CardTravel from "../../components/Cards/CardTravel/CardTravel";
 import CardVisit from "../../components/Cards/CardVisit/CardVisit";
 import Spinner from "../../components/Spinner/Spinner";
 // URL
-// const URL = "https://livre.softwarecloud2.com";
+const URL_HOST = "https://livre.softwarecloud2.com";
 
-const Profile = ({ token, URL ,userOfLivre}) => {
+const Profile = ({ token, userOfLivre }) => {
   const [profile, setProfile] = useState([]);
-  const [test, setTest] = useState([]);
   const [feedbacks, setFeedbacks] = useState([]);
   const [reservation, setReservation] = useState([]);
   const [loading, setLoading] = useState(true);
-  // console.log(userOfLivre?.id)
+  const [userName, setUserName] = useState("");
+  const [showPicImg, setShowPicImg] = useState(null);
+  const onImageChangeImg = (e) => {
+    setShowPicImg(URL?.createObjectURL(e.target.files[0]));
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await fetch(`${URL}/api/v1/client/profile/${userOfLivre?.id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Authorization": `${token}`,
-        },
-      });
+      const response = await fetch(
+        `${URL_HOST}/api/v1/client/profile/${userOfLivre?.id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Authorization": `${token}`,
+          },
+        }
+      );
       const newData = await response.json();
       setProfile(newData?.data?.client);
       setLoading(false);
+      setUserName(newData?.data?.client?.name);
+      // setUserName(userOfLivre?.name);
       // setLoadingOneCat(false)
     };
 
     fetchProfile();
-  }, [URL, token, userOfLivre?.id]);
+  }, [token, userOfLivre?.id]);
 
   useEffect(() => {
     const fetchReservation = async () => {
-      const response = await fetch(`${URL}/api/v1/reservation/reservations/1`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Authorization": `${token}`,
-        },
-      });
+      const response = await fetch(
+        `${URL_HOST}/api/v1/reservation/reservations/1`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Authorization": `${token}`,
+          },
+        }
+      );
       const newData = await response.json();
       setReservation(newData?.data?.reservations);
     };
 
     fetchReservation();
-  }, [URL, token]);
-
+  }, [token]);
+  // ///////////
   useEffect(() => {
-    fetch(`${URL}/api/v1/feedback/feedbacks/3`, {
+    fetch(`${URL_HOST}/api/v1/feedback/feedbacks/3`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -72,10 +81,32 @@ const Profile = ({ token, URL ,userOfLivre}) => {
         setFeedbacks(data?.data?.feedbacks);
         // setLoading(false);
       });
-  }, [URL, token]);
-  // console.log("profile", profile);
-  // console.log("Feedbacks", feedbacks);
-  console.log("Reservation", reservation);
+  }, [token]);
+  // To handleEditProfile
+  const handleEditProfile = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("name", userName);
+    formData.append("photo", showPicImg);
+    fetch(`${URL_HOST}/api/v1/client/update/profile/${userOfLivre?.id}`, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+        "X-Authorization": `${token}`,
+      },
+    })
+      .then((data) => data.json())
+      .then((res) => {
+        if (res.status === "success") {
+          alert(res.message);
+          window.location.reload();
+        } else {
+          alert(res.message);
+        }
+      });
+  };
+
   return (
     <>
       {loading ? (
@@ -90,14 +121,16 @@ const Profile = ({ token, URL ,userOfLivre}) => {
                 <input
                   type="file"
                   id="file"
-                  //   onChange={(e) => {
-
-                  //     onImageChangeImg(e);
-                  //   }}
+                  onChange={(e) => {
+                    onImageChangeImg(e);
+                  }}
                   style={{ display: "none" }}
                 />
                 <img
-                  src={`${URL}/${profile?.image}`}
+                  // src={`${URL_HOST}/${profile?.image}`}
+                  src={
+                    showPicImg ? showPicImg : `${URL_HOST}/${profile?.image}`
+                  }
                   alt="profileImage"
                   loading="lazy"
                 />
@@ -107,7 +140,13 @@ const Profile = ({ token, URL ,userOfLivre}) => {
               </div>
               <div className="second-step-inputs">
                 <div className="input-div">
-                  <input type="text" placeholder={profile?.name} />
+                  <input
+                    type="text"
+                    placeholder={userName}
+                    // value={userName}
+                    value={userName || ""}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
                   <span className="flex-center">
                     <AiOutlineUser />
                   </span>
@@ -138,7 +177,10 @@ const Profile = ({ token, URL ,userOfLivre}) => {
                 </div>
               </div>
               <div>
-                <button className="btn btn-purple btn-w-100">
+                <button
+                  className="btn btn-purple btn-w-100"
+                  onClick={handleEditProfile}
+                >
                   حفظ التعديلات
                 </button>
               </div>

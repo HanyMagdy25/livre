@@ -147,6 +147,8 @@ const TravelInside = ({ token, userOfLivre }) => {
                       setToggle={setToggle}
                       userOfLivre={userOfLivre}
                       countDis={countDis}
+                      setCountDis={setCountDis}
+                      count={count}
                     />
                   )}
                 </div>

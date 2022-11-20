@@ -5,29 +5,19 @@ import { travelsData } from "../../utils/data";
 import "./Favourite.css";
 // URL
 const URL = "https://livre.softwarecloud2.com";
-const Favourite = ({ token, URL }) => {
+const Favourite = ({ token, URL ,userOfLivre }) => {
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   fetch(`${URL}/api/v1/favorite/favorites/1`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "X-Authorization": `${token}`,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setFavourites(data);
-  //       setLoading(false);
-  //     });
-  // }, [token]);
-  // console.log("Favourites",favourites);
+  const [client_id, setClient_id] = useState(userOfLivre?.id);
+  // To Search => API
+  useEffect(() => {
+    setClient_id(userOfLivre?.id);
+  }, [userOfLivre?.id]);
+  console.log("favourites",favourites);
+
   useEffect(() => {
     const fetchFavourite = async () => {
-      const response = await fetch(`${URL}/api/v1/favorite/favorites/1`, {
+      const response = await fetch(`${URL}/api/v1/favorite/favorites/${client_id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -35,14 +25,14 @@ const Favourite = ({ token, URL }) => {
         },
       });
       const newData = await response.json();
-      setFavourites(newData?.data);
+      setFavourites(newData?.data?.favorites);
       setLoading(false);
     };
 
     fetchFavourite();
-  }, [URL, token]);
+  }, [URL, client_id, token]);
 
-  console.log(favourites);
+  // console.log(favourites);
   return (
     <>
       {loading ? (
@@ -51,12 +41,12 @@ const Favourite = ({ token, URL }) => {
         <div className="favourite-section">
           <div className="favourite-container container">
             <h2>الفعاليات المحفوظه</h2>
-            {favourites.favorites.length === 0 ? (
+            {favourites.length === 0 ? (
               <div className="favourite-cards">لا يوجد مفضلات</div>
             ) : (
               <div className="favourite-cards">
-                {travelsData.slice(0, 3).map((item, index) => (
-                  <CardTravel item={item} key={index} />
+                {favourites.map((item, index) => (
+                  <CardTravel item={item?.event} key={index} />
                 ))}
               </div>
             )}

@@ -8,9 +8,11 @@ import CardVisit from "../../components/Cards/CardVisit/CardVisit";
 import Spinner from "../../components/Spinner/Spinner";
 import { Link, useParams } from "react-router-dom";
 
-const Travels = ({ token }) => {
+const Travels = ({ token, URL,userOfLivre }) => {
   const param = useParams();
   const [catsNameApi, setCatsNameApi] = useState([]);
+  // const [search, setSearch] = useState([]);
+  const [searchText, setSearchText] = useState("");
   const [eventsApi, setEventsApi] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category_ID, setCategory_ID] = useState(14);
@@ -19,16 +21,13 @@ const Travels = ({ token }) => {
   // To Fetch Categories API
   useEffect(() => {
     const fetchDataFromAllCat = async () => {
-      const response = await fetch(
-        `https://livre.softwarecloud2.com/api/v1/events/categories`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Authorization": `${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${URL}/api/v1/events/categories`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Authorization": `${token}`,
+        },
+      });
       const newData = await response.json();
       setCatsNameApi(newData);
       setCategory_ID(param.id ? param.id : category_ID);
@@ -36,15 +35,13 @@ const Travels = ({ token }) => {
     };
 
     fetchDataFromAllCat();
-  }, [category_ID, param.id, token]);
+  }, [URL, category_ID, param.id, token]);
   // console.log("555", catsNameApi?.data?.categories[0]?.id);
   // To Fetch One Category API
   useEffect(() => {
     const fetchDataFromOneCat = async () => {
       const response = await fetch(
-        `https://livre.softwarecloud2.com/api/v1/events/category/${
-          param.id ? param.id : category_ID
-        }`,
+        `${URL}/api/v1/events/category/${param.id ? param.id : category_ID}`,
         {
           method: "GET",
           headers: {
@@ -62,42 +59,26 @@ const Travels = ({ token }) => {
     };
 
     fetchDataFromOneCat();
-  }, [category_ID, param.id, token]);
-  // console.log("000 dataFromOneCat", dataFromOneCat);
-  // console.log("eventsApi", eventsApi);
+  }, [URL, category_ID, param.id, token]);
 
-  // console.log("category_ID", category_ID);
-  // To Fetch Events API
-  // useEffect(() => {
-  //   fetch(`https://livre.softwarecloud2.com/api/v1/events/events`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "X-Authorization": `${token}`,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setEventsApi(data);
-  //       setLoading(false);
-  //     });
-  // }, [token]);
-
-  // useEffect(() => {
-  //   setCategory(eventsApi?.data?.events);
-  // }, []);
-
-  // const filterResult = (cartItem) => {
-  //   const result = travelsData?.filter((curData) => {
-  //     return curData.cats.includes(cartItem);
-  //   });
-  //   setCategory(result);
-  //   setActiveFilter(cartItem);
-  // };
-
-  // console.log("Events: ", eventsApi);
+  // To Search => API
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const raw = { searchText };
+    fetch(`${URL}/api/v1/events/search`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Authorization": `${token}`,
+      },
+      body: JSON.stringify(raw),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // setSearch(data);
+        setEventsApi(data?.data?.events);
+      });
+  };
   return (
     <>
       {loading ? (
@@ -109,29 +90,23 @@ const Travels = ({ token }) => {
             <div className="travels-search-div flex-center">
               <div className="search-div">
                 <div className="search-div-item">
-                  <input type="text" placeholder="ابحث عن أي مدينة تريد" />
+                  <input
+                    type="text"
+                    placeholder="ابحث عن أي مدينة تريد"
+                    onChange={(e) => setSearchText(e.target.value)}
+                  />
                   <span>
                     <BsSearch />
                   </span>
                 </div>
-                <button className="btn btn-search">بحث</button>
+                <button className="btn btn-search" onClick={handleSearch}>
+                  بحث
+                </button>
               </div>
             </div>
             {/* =========== Start Filters =========== */}
             <div className="travels-filters">
               <div className="filter-btns">
-                {/* <button
-                  className={`btn-blue ${
-                    activeFilter === "All Categories" ? "btn-blue-active" : ""
-                  }`}
-                  onClick={() => {
-                    setCategory(travelsData);
-                    setActiveFilter("All Categories");
-                  }}
-                >
-                  كل الرحلات
-                </button> */}
-
                 {catsNameApi?.data?.categories?.map((item, index) => (
                   <Link
                     key={index}
@@ -140,16 +115,6 @@ const Travels = ({ token }) => {
                   >
                     {item?.title}
                   </Link>
-
-                  // <button
-                  //
-                  //   className={`btn-blue ${
-                  //     activeFilter === `${item?.title}` ? "btn-blue-active" : ""
-                  //   }`}
-                  //   onClick={() => filterResult(`${item.title}`)}
-                  // >
-                  //
-                  // </button>
                 ))}
               </div>
             </div>
@@ -160,7 +125,7 @@ const Travels = ({ token }) => {
               ) : (
                 <div className="cards-travels-div">
                   {eventsApi?.map((item, index) => (
-                    <CardTravel item={item} key={index} />
+                    <CardTravel item={item} key={index} token={token} userOfLivre={userOfLivre}/>
                   ))}
                   {visits?.slice(0, 1)?.map((item, index) => (
                     <CardVisit item={item} key={index} type="w-50" />

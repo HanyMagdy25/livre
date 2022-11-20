@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // CSS File
 import "./CardTravel.css";
@@ -11,8 +11,31 @@ import { FiUsers } from "react-icons/fi";
 // URL
 const URL = "https://livre.softwarecloud2.com";
 
-const CardTravel = ({ item, widthThree }) => {
-  // console.log("Item", item);
+const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
+  const [client_id, setClient_id] = useState(null);
+  const [event_id, setEvent_id] = useState(null);
+  console.log("item",item)
+  // To Search => API
+  useEffect(() => {
+    setClient_id(userOfLivre?.id);
+    setEvent_id(item?.id)
+  }, [item?.id, userOfLivre?.id]);
+  const handleFavourite = (e) => {
+    e.preventDefault();
+    const raw = { client_id, event_id };
+    fetch(`${URL}/api/v1/favorite/favorite`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Authorization": `${token}`,
+      },
+      body: JSON.stringify(raw),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data);
+      });
+  };
   return (
     <>
       {item && (
@@ -25,9 +48,11 @@ const CardTravel = ({ item, widthThree }) => {
               <img src={`${URL}/${item?.image}`} alt={item.title} />
               <div className="card-travel-title">
                 <span>{item.title}</span>
-                <span className="flex-center">
-                  <BsBookmark />
-                </span>
+                {userOfLivre && (
+                  <span className="flex-center" onClick={handleFavourite}>
+                    <BsBookmark />
+                  </span>
+                )}
               </div>
               <div className="card-travel-content">
                 <div className="card-travel-content-price">

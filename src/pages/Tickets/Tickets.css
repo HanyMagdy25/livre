@@ -3,6 +3,7 @@
 }
 .tickets-container {
   padding: 20px 40px;
+  min-height: calc(100vh - (70px + 160px + 30px));
 }
 .tickets-container h2 {
   color: var(--color-purple);
