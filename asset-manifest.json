@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/livre/static/css/main.52de10a7.css",
-    "main.js": "/livre/static/js/main.dccc138a.js",
+    "main.css": "/livre/static/css/main.b035cae9.css",
+    "main.js": "/livre/static/js/main.c246d312.js",
     "static/media/home-bg.png": "/livre/static/media/home-bg.2aea761bc7fadae54d91.png",
     "static/media/camping.png": "/livre/static/media/camping.267b34a6a539ed904b98.png",
     "static/media/trips.png": "/livre/static/media/trips.7e5d874eff69b9331a8e.png",
@@ -12,17 +12,18 @@
     "static/media/playstore-livre.png": "/livre/static/media/playstore-livre.880378922c6ef13c0377.png",
     "static/media/cam.png": "/livre/static/media/cam.5d610e22803da6b841d1.png",
     "static/media/verify.png": "/livre/static/media/verify.46cc97767bfe0b9be64a.png",
+    "static/media/loading.png": "/livre/static/media/loading.53ef772fafc57d6916cc.png",
     "static/media/profile.png": "/livre/static/media/profile.84387573c12399421fcc.png",
     "static/media/campaign.png": "/livre/static/media/campaign.cc0785b23a610ee60965.png",
     "static/media/tag.png": "/livre/static/media/tag.15f4692af678cedf0397.png",
     "static/media/increase.png": "/livre/static/media/increase.78f03ad2770005d78f80.png",
     "static/media/logo.png": "/livre/static/media/logo.6d31a1baedbc4f9dd060.png",
     "index.html": "/livre/index.html",
-    "main.52de10a7.css.map": "/livre/static/css/main.52de10a7.css.map",
-    "main.dccc138a.js.map": "/livre/static/js/main.dccc138a.js.map"
+    "main.b035cae9.css.map": "/livre/static/css/main.b035cae9.css.map",
+    "main.c246d312.js.map": "/livre/static/js/main.c246d312.js.map"
   },
   "entrypoints": [
-    "static/css/main.52de10a7.css",
-    "static/js/main.dccc138a.js"
+    "static/css/main.b035cae9.css",
+    "static/js/main.c246d312.js"
   ]
 }
