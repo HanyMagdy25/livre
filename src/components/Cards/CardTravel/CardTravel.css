@@ -17,9 +17,11 @@
 .card-travel-container {
   position: relative;
 }
-.card-travel-container img {
+.card-travel-container > img {
   border-radius: 20px;
   width: 100%;
+  height: 160px;
+  object-fit: cover;
 }
 .card-travel-container {
   border-radius: 20px;

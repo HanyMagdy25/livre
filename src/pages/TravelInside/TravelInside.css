@@ -19,6 +19,8 @@
 
 .travel-inside-right .rate {
   color: #ffde00;
+  cursor: pointer;
+  font-size: 22px;
 }
 .travel-inside-right .rate span {
   margin-left: 2px;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
-import { travelsData, visits } from "../../utils/data";
+import { travelsData } from "../../utils/data";
 // Icons
 import { BsCamera } from "react-icons/bs";
 import { AiOutlineMobile, AiOutlineUser } from "react-icons/ai";
@@ -8,7 +8,7 @@ import { MdAlternateEmail, MdLocationCity } from "react-icons/md";
 import { HiOutlineLockClosed } from "react-icons/hi";
 // Components
 import CardTravel from "../../components/Cards/CardTravel/CardTravel";
-import CardVisit from "../../components/Cards/CardVisit/CardVisit";
+// import CardVisit from "../../components/Cards/CardVisit/CardVisit";
 import Spinner from "../../components/Spinner/Spinner";
 // URL
 const URL_HOST = "https://livre.softwarecloud2.com";
@@ -50,7 +50,7 @@ const Profile = ({ token, userOfLivre }) => {
   useEffect(() => {
     const fetchReservation = async () => {
       const response = await fetch(
-        `${URL_HOST}/api/v1/reservation/reservations/1`,
+        `${URL_HOST}/api/v1/reservation/reservations/${userOfLivre?.id}`,
         {
           method: "GET",
           headers: {
@@ -64,10 +64,10 @@ const Profile = ({ token, userOfLivre }) => {
     };
 
     fetchReservation();
-  }, [token]);
+  }, [token, userOfLivre?.id]);
   // ///////////
   useEffect(() => {
-    fetch(`${URL_HOST}/api/v1/feedback/feedbacks/3`, {
+    fetch(`${URL_HOST}/api/v1/feedback/feedbacks/${userOfLivre?.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const Profile = ({ token, userOfLivre }) => {
         setFeedbacks(data?.data?.feedbacks);
         // setLoading(false);
       });
-  }, [token]);
+  }, [token, userOfLivre?.id]);
   // To handleEditProfile
   const handleEditProfile = (e) => {
     e.preventDefault();
@@ -106,6 +106,8 @@ const Profile = ({ token, userOfLivre }) => {
         }
       });
   };
+  // console.log("showPicImg", showPicImg);
+  // console.log("userName", userName);
 
   return (
     <>
@@ -152,25 +154,29 @@ const Profile = ({ token, userOfLivre }) => {
                   </span>
                 </div>
                 <div className="input-div">
-                  <input type="text" placeholder={profile?.phone} />
+                  <input type="text" placeholder={profile?.phone} disabled />
                   <span className="flex-center">
                     <AiOutlineMobile />
                   </span>
                 </div>
                 <div className="input-div">
-                  <input type="email" placeholder={profile?.email} />
+                  <input type="email" placeholder={profile?.email} disabled />
                   <span className="flex-center">
                     <MdAlternateEmail />
                   </span>
                 </div>
                 <div className="input-div">
-                  <input type="city" placeholder="الدمام" />
+                  <input type="city" placeholder="الدمام" disabled />
                   <span className="flex-center">
                     <MdLocationCity />
                   </span>
                 </div>
                 <div className="input-div">
-                  <input type="password" placeholder="* * * * * * * * * *" />
+                  <input
+                    type="password"
+                    placeholder="* * * * * * * * * *"
+                    disabled
+                  />
                   <span className="flex-center">
                     <HiOutlineLockClosed />
                   </span>
@@ -209,9 +215,9 @@ const Profile = ({ token, userOfLivre }) => {
                   <div className="old-trips">لا يوجد تقيمات</div>
                 ) : (
                   <div className="old-trips">
-                    {visits?.slice(0, 3).map((item, index) => (
-                      <CardVisit
-                        item={item}
+                    {feedbacks?.slice(0, 3).map((item, index) => (
+                      <CardTravel
+                        item={item.event}
                         key={index}
                         widthThree="widthThree"
                       />

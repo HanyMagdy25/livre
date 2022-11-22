@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // Icons
-import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { IoTicketOutline } from "react-icons/io5";
 import { BsBookmark } from "react-icons/bs";
 
@@ -20,11 +20,6 @@ const navProfile = [
     title: "المحفوظات",
     path: "/favourite",
     icon: <BsBookmark />,
-  },
-  {
-    title: "الإعدادات",
-    path: "/travels",
-    icon: <AiOutlineSetting />,
   },
 ];
 

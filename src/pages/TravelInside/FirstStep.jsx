@@ -16,7 +16,7 @@ const FirstStep = ({ oneEvent, setToggle, userOfLivre }) => {
             <span className="flex-center">
               <BsCalendarMinus />
             </span>
-            {oneEvent.start_at}
+            {oneEvent.start_at?.slice(0,10)}
           </div>
 
           <div className="flex card-travel-content-days my-10">

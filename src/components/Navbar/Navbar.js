@@ -13,6 +13,8 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import logo from "../../assets/logo.png";
 import profileImg from "../../assets/profile.png";
 import Dropdown from "./Dropdown";
+// URL
+// const URL ="https://livre.softwarecloud2.com";
 
 const Navbar = ({ userOfLivre }) => {
   const [click, setClick] = useState(false);
@@ -21,6 +23,7 @@ const Navbar = ({ userOfLivre }) => {
   const handleClick = () => setClick(!click);
 
   const navigate = useNavigate();
+  // console.log("nav",userOfLivre)
 
   return (
     <>

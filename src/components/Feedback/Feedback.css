@@ -1,0 +1,67 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  transition: all 0.15s linear;
+  background-color: #00000057;
+  z-index: 9999;
+  /* padding: 0 50px; */
+  /* opacity: 0.5; */
+}
+.popup .model {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  /* border: 1pxsolidrgba(0,0,0,.2); */
+  border-radius: 15px;
+  outline: 0;
+  width: 50%;
+  margin: auto;
+  z-index: 1060;
+  opacity: 1;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+.feedback-container {
+  padding: 30px;
+}
+.feedback-container h2 {
+  color: var(--color-purple);
+  margin-bottom: 8px;
+}
+.feedback-container .stars {
+  margin: 10px 0;
+  text-align: center;
+}
+.feedback-container textarea {
+  background-color: #f5f4f6;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  padding: 15px;
+  height: 130px;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .popup .model {
+    max-width: 300px;
+    width: 80%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .popup .model {
+    width: 90%;
+  }
+}

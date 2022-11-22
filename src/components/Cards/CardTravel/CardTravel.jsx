@@ -14,11 +14,10 @@ const URL = "https://livre.softwarecloud2.com";
 const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
   const [client_id, setClient_id] = useState(null);
   const [event_id, setEvent_id] = useState(null);
-  console.log("item",item)
   // To Search => API
   useEffect(() => {
     setClient_id(userOfLivre?.id);
-    setEvent_id(item?.id)
+    setEvent_id(item?.id);
   }, [item?.id, userOfLivre?.id]);
   const handleFavourite = (e) => {
     e.preventDefault();
@@ -45,7 +44,12 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
         >
           <div>
             <div className="card-travel-container">
-              <img src={`${URL}/${item?.image}`} alt={item.title} />
+              <img
+                src={`${URL}/${item?.image}`}
+                alt={item.title}
+                loading="lazy"
+               
+              />
               <div className="card-travel-title">
                 <span>{item.title}</span>
                 {userOfLivre && (
@@ -61,7 +65,7 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                     <span>{item.price} ريال</span>
                   </div>
                   <span className="card-travel-content-price-left">
-                    {item?.start_at?.split(0, 10)}
+                    {item?.start_at?.slice(0,10)}
                   </span>
                 </div>
                 <div className="flex card-travel-content-city">

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+// CSS File
+import "./Favourite.css";
+// Components
 import CardTravel from "../../components/Cards/CardTravel/CardTravel";
 import Spinner from "../../components/Spinner/Spinner";
-import { travelsData } from "../../utils/data";
-import "./Favourite.css";
-// URL
-const URL = "https://livre.softwarecloud2.com";
-const Favourite = ({ token, URL ,userOfLivre }) => {
+
+const Favourite = ({ token, URL, userOfLivre }) => {
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [client_id, setClient_id] = useState(userOfLivre?.id);
@@ -13,17 +13,19 @@ const Favourite = ({ token, URL ,userOfLivre }) => {
   useEffect(() => {
     setClient_id(userOfLivre?.id);
   }, [userOfLivre?.id]);
-  console.log("favourites",favourites);
 
   useEffect(() => {
     const fetchFavourite = async () => {
-      const response = await fetch(`${URL}/api/v1/favorite/favorites/${client_id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Authorization": `${token}`,
-        },
-      });
+      const response = await fetch(
+        `${URL}/api/v1/favorite/favorites/${client_id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Authorization": `${token}`,
+          },
+        }
+      );
       const newData = await response.json();
       setFavourites(newData?.data?.favorites);
       setLoading(false);
@@ -31,8 +33,6 @@ const Favourite = ({ token, URL ,userOfLivre }) => {
 
     fetchFavourite();
   }, [URL, client_id, token]);
-
-  // console.log(favourites);
   return (
     <>
       {loading ? (

@@ -22,6 +22,7 @@ import "swiper/css/effect-creative";
 
 // import required modules
 import { EffectCreative } from "swiper";
+import Feedback from "../../components/Feedback/Feedback";
 // URL
 const URL = "https://livre.softwarecloud2.com";
 
@@ -32,6 +33,7 @@ const TravelInside = ({ token, userOfLivre }) => {
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(1);
   const [countDis, setCountDis] = useState(0);
+  const [popupFeedback, setPopupFeedback] = useState(false);
   const param = useParams();
   // const userLoggedin = false
   // const oneTravel = travelsData.find((a) => a.id === param.id);
@@ -99,11 +101,14 @@ const TravelInside = ({ token, userOfLivre }) => {
 
                   <div className="flex travel-inside-right-title">
                     <h2>{oneEvent[0]?.title}</h2>
-                    <div className="flex rate">
+                    <div
+                      className="flex rate"
+                      onClick={() => setPopupFeedback(true)}
+                    >
+                      <span className="flex-center">{oneEvent[0]?.rate}</span>
                       <span className="flex-center">
                         <BsStar />
                       </span>
-                      <span className="flex-center">{oneEvent[0]?.rate}</span>
                     </div>
                   </div>
 
@@ -153,6 +158,14 @@ const TravelInside = ({ token, userOfLivre }) => {
                   )}
                 </div>
               </div>
+              {popupFeedback && (
+                <Feedback
+                  setPopupFeedback={setPopupFeedback}
+                  userOfLivre={userOfLivre}
+                  token={token}
+                  oneEvent={oneEvent}
+                />
+              )}
             </div>
           )}
         </>

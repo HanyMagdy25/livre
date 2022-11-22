@@ -6,6 +6,7 @@
 }
 .cardVisit:nth-child(1) {
   width: 49%;
+  max-height: 275px;
 }
 .cardVisit.w-50 {
   width: 49%;
@@ -37,7 +38,7 @@
 }
 .cardVisit-content {
   position: absolute;
-  bottom: 25%;
+  bottom: 15%;
   right: 20px;
   color: var(--color-white);
 }
