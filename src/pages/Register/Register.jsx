@@ -15,40 +15,45 @@ const Login = ({ token }) => {
   const [city_id, setCity_id] = useState("");
   const [isPending, setIsPending] = useState(false);
   const [showPicImg, setShowPicImg] = useState(null);
+  const [photo, setPhoto] = useState(null);
   const navigate = useNavigate();
   const onImageChangeImg = (e) => {
     setShowPicImg(URL?.createObjectURL(e.target.files[0]));
   };
-// console.log(showPicImg)
+  
   const handleRegister = (e) => {
     e.preventDefault();
-    const blog = { name, email, phone, city_id, password };
-
     setIsPending(true);
-
     let formData = new FormData();
-    for (const [key, value] of Object.entries(blog)) {
-      formData.append(key, value);
-    }
-    formData.append("photo", showPicImg);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("city_id", city_id);
+    formData.append("password", password);
+    formData.append("photo",photo);
+    
     fetch(`${URL_HOST}/api/v1/client/register`, {
       method: "POST",
       body: formData,
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "X-Authorization": `${token}`,
       },
-      // redirect: 'follow',
     })
       .then((data) => data.json())
       .then((res) => {
         console.log("res", res);
         setIsPending(false);
-        if (res.status === "success") {
-          navigate("/login");
-        }else {
-          alert(res.message);
-        }
+        if (res.message === "هذا البريد الألكتروني مستخدم بالفعل!") {
+          // alert(res.message);
+          window.location.href = "/login";
+        } 
+        
+        // if (res.status === "success") {
+        //   navigate("/login");
+        // }else {
+        //   alert(res.message);
+        // }
       });
   };
   return (
@@ -66,11 +71,12 @@ const Login = ({ token }) => {
             <input
               type="file"
               id="file"
-              onChange={(e) => {
-                // setImg(e.target.files[0]);
-                onImageChangeImg(e);
-              }}
+              // onChange={(e) => {
+              //   // setImg(e.target.files[0]);
+              //   onImageChangeImg(e);
+              // }}
               style={{ display: "none" }}
+              onChange={(e)=> {setPhoto(e.target.files[0]);onImageChangeImg(e);}}
             />
             <img
               src={showPicImg ? showPicImg : camImage}
@@ -132,9 +138,10 @@ const Login = ({ token }) => {
           </div>
           {/* ============= End الشروط و الأحكام ============ */}
           <div>
-            <button className="btn btn-purple btn-w-100" onClick={handleRegister}>
+            <button className="btn btn-purple btn-w-100" type="button" onClick={handleRegister}>
               إنشاء حساب
             </button>
+            {isPending && <p>جارى التسجيل</p>}
           </div>
           {/* ============= Start أو قم بإنشاء الحساب عن طريق =========== */}
           <div className="create-account">

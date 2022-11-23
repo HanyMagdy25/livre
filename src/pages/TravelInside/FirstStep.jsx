@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const FirstStep = ({ oneEvent, setToggle, userOfLivre }) => {
   const navigate = useNavigate();
-  // console.log("userOfLivre",userOfLivre);
+  console.log("oneEvent", oneEvent);
   return (
     <>
       {oneEvent && (
@@ -16,18 +16,19 @@ const FirstStep = ({ oneEvent, setToggle, userOfLivre }) => {
             <span className="flex-center">
               <BsCalendarMinus />
             </span>
-            {oneEvent.start_at?.slice(0,10)}
+            {oneEvent.start_at?.slice(0, 10)}
           </div>
 
           <div className="flex card-travel-content-days my-10">
             <span className="flex-center">
               <BsClock />
             </span>{" "}
-            {oneEvent.duration}
+            {oneEvent.duration} ساعات{" "}
+            {oneEvent.daily > 0 && `${oneEvent.daily} أيام`}
           </div>
           <div
             className={
-              oneEvent.gender === "عائلات"
+              !oneEvent.gender === 1
                 ? "flex card-travel-content-gender family my-10"
                 : "flex card-travel-content-gender"
             }
@@ -35,7 +36,7 @@ const FirstStep = ({ oneEvent, setToggle, userOfLivre }) => {
             <span className="flex-center">
               <FiUsers />
             </span>{" "}
-            {oneEvent.gender}
+            {oneEvent.type === 1 ? "شباب" : "عائلات"}
           </div>
           <div className="travel-inside-left-price">
             <span>السعر</span>

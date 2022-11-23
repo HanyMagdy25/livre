@@ -15,7 +15,7 @@
   box-shadow: 1px 2px 12px #dbcce8c9;
   color: var(--color-purple);
   border-radius: 20px;
-  padding: 20px 50px;
+  padding: 40px 50px;
 }
 .login-content > h2 {
   margin-bottom: 3px;

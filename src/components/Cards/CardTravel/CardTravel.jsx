@@ -14,6 +14,7 @@ const URL = "https://livre.softwarecloud2.com";
 const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
   const [client_id, setClient_id] = useState(null);
   const [event_id, setEvent_id] = useState(null);
+  console.log(item);
   // To Search => API
   useEffect(() => {
     setClient_id(userOfLivre?.id);
@@ -81,11 +82,11 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                     <span className="flex-center">
                       <BsClock />
                     </span>{" "}
-                    {item.duration} أيام
+                    {/* {item.duration} أيام */}
                   </div>
                   <div
                     className={
-                      item.gender === "عائلات"
+                      !item.type === 1
                         ? "flex card-travel-content-gender family"
                         : "flex card-travel-content-gender"
                     }
@@ -93,7 +94,7 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                     <span className="flex-center">
                       <FiUsers />
                     </span>{" "}
-                    {item.gender}
+                    {item.type === 1 ? "شباب" : "عائلات"}
                   </div>
                 </div>
               </div>

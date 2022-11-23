@@ -20,6 +20,7 @@ const Profile = ({ token, userOfLivre }) => {
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("");
   const [showPicImg, setShowPicImg] = useState(null);
+  const [photo, setPhoto] = useState(null);
   const onImageChangeImg = (e) => {
     setShowPicImg(URL?.createObjectURL(e.target.files[0]));
   };
@@ -87,12 +88,12 @@ const Profile = ({ token, userOfLivre }) => {
     e.preventDefault();
     let formData = new FormData();
     formData.append("name", userName);
-    formData.append("photo", showPicImg);
+    formData.append("photo", photo);
     fetch(`${URL_HOST}/api/v1/client/update/profile/${userOfLivre?.id}`, {
       method: "POST",
       body: formData,
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "X-Authorization": `${token}`,
       },
     })
@@ -123,10 +124,11 @@ const Profile = ({ token, userOfLivre }) => {
                 <input
                   type="file"
                   id="file"
-                  onChange={(e) => {
-                    onImageChangeImg(e);
-                  }}
+                  // onChange={(e) => {
+                  //   onImageChangeImg(e);
+                  // }}
                   style={{ display: "none" }}
+                  onChange={(e)=> {setPhoto(e.target.files[0]);onImageChangeImg(e);}}
                 />
                 <img
                   // src={`${URL_HOST}/${profile?.image}`}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import { travelsData } from "../../utils/data";
 // CSS File
 import "./TravelInside.css";
@@ -25,6 +25,8 @@ import { EffectCreative } from "swiper";
 import Feedback from "../../components/Feedback/Feedback";
 // URL
 const URL = "https://livre.softwarecloud2.com";
+// To Split The conditions
+const value = "\r";
 
 const TravelInside = ({ token, userOfLivre }) => {
   // UseState
@@ -34,10 +36,13 @@ const TravelInside = ({ token, userOfLivre }) => {
   const [count, setCount] = useState(1);
   const [countDis, setCountDis] = useState(0);
   const [popupFeedback, setPopupFeedback] = useState(false);
+  const [tax, setTax] = useState([]);
+  const [conditions, setConditions] = useState([]);
   const param = useParams();
   // const userLoggedin = false
   // const oneTravel = travelsData.find((a) => a.id === param.id);
   // /////////
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`https://livre.softwarecloud2.com/api/v1/events/event/${param.id}`, {
       method: "GET",
@@ -52,6 +57,12 @@ const TravelInside = ({ token, userOfLivre }) => {
       .then((data) => {
         setOneEvent(data.data.event);
         setLoading(false);
+        setConditions(
+          data?.data?.event[0]?.conditions
+            ?.split("\n")
+            .filter((item) => item !== value)
+        );
+        // setConditions(data?.data?.event)
       });
     // setOneTravel(oneEvent?.data?.event);
   }, [param.id, token]);
@@ -60,7 +71,7 @@ const TravelInside = ({ token, userOfLivre }) => {
   //   setCategory(oneEvent?.data?.event);
   // }, [oneEvent?.data?.event]);
 
-  // console.log("oneEvent", oneEvent);
+  // console.log("Conditions", conditions);
   // console.log("oneEvent?.images", oneEvent[0]?.images);
   return (
     <>
@@ -101,7 +112,28 @@ const TravelInside = ({ token, userOfLivre }) => {
 
                   <div className="flex travel-inside-right-title">
                     <h2>{oneEvent[0]?.title}</h2>
-                    <div
+                    {userOfLivre ? (
+                      <div
+                        className="flex rate"
+                        onClick={() => setPopupFeedback(true)}
+                      >
+                        <span className="flex-center">{oneEvent[0]?.rate}</span>
+                        <span className="flex-center">
+                          <BsStar />
+                        </span>
+                      </div>
+                    ) : (
+                      <div
+                        className="flex rate"
+                        onClick={() => navigate("/login")}
+                      >
+                        <span className="flex-center">{oneEvent[0]?.rate}</span>
+                        <span className="flex-center">
+                          <BsStar />
+                        </span>
+                      </div>
+                    )}
+                    {/* <div
                       className="flex rate"
                       onClick={() => setPopupFeedback(true)}
                     >
@@ -109,7 +141,7 @@ const TravelInside = ({ token, userOfLivre }) => {
                       <span className="flex-center">
                         <BsStar />
                       </span>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="flex card-travel-content-city">
@@ -121,6 +153,29 @@ const TravelInside = ({ token, userOfLivre }) => {
                   </div>
 
                   <p>{oneEvent[0]?.description}</p>
+                  {/* ======== الخدمات ====== */}
+                  <div className="features">
+                    <h3>الخدمات</h3>
+                    <div className="features-div">
+                      {oneEvent[0]?.features.map((item, index) => (
+                        <div key={index} className="features-icon">
+                          <div>
+                            <img src={`${URL}/${item?.icon}`} alt="icon" />
+                          </div>
+                          <span>{item?.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* ======== Conditions ====== */}
+                  <div className="conditions">
+                    <h3>الشروط و الأحكام</h3>
+                    <ul>
+                      {conditions?.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
                 {/* ======== Left Side ========== */}
                 <div className="travel-inside-left">

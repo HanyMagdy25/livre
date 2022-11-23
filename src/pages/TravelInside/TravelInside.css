@@ -33,6 +33,49 @@
 .travel-inside-right-title h2 {
   color: var(--color-purple);
 }
+/* ==== features ====== */
+
+.features-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.features-icon {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  text-align: center;
+  max-width: 65px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.features-icon > div{
+  background: #e3e3e3;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+}
+.features-icon img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+.features-icon span {
+ font-size: 15px;
+ margin-top: 3px;
+}
+/* ====== conditions =======*/
+.conditions,
+.features {
+  margin: 15px 0 10px 0;
+}
+.conditions h3,
+.features h3 {
+  color: var(--color-purple);
+  margin-bottom: 8px;
+}
+.conditions ul {
+  list-style: none;
+}
 /* ========== Left ========== */
 .travel-inside-left {
   width: 26%;
