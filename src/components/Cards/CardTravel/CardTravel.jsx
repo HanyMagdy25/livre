@@ -49,7 +49,6 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                 src={`${URL}/${item?.image}`}
                 alt={item.title}
                 loading="lazy"
-               
               />
               <div className="card-travel-title">
                 <span>{item.title}</span>
@@ -66,7 +65,7 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                     <span>{item.price} ريال</span>
                   </div>
                   <span className="card-travel-content-price-left">
-                    {item?.start_at?.slice(0,10)}
+                    {item?.start_at?.slice(0, 10)}
                   </span>
                 </div>
                 <div className="flex card-travel-content-city">
@@ -82,19 +81,22 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                     <span className="flex-center">
                       <BsClock />
                     </span>{" "}
-                    {/* {item.duration} أيام */}
+                    {item.duration} أيام
                   </div>
                   <div
                     className={
-                      !item.type === 1
-                        ? "flex card-travel-content-gender family"
-                        : "flex card-travel-content-gender"
+                      item.type === 1
+                      ? "flex card-travel-content-gender"
+                      : "flex card-travel-content-gender family"
                     }
                   >
                     <span className="flex-center">
                       <FiUsers />
                     </span>{" "}
-                    {item.type === 1 ? "شباب" : "عائلات"}
+                    {item.type === 1 && "شباب"}
+                    {item.type === 2 && "عائلات"}
+                    {item.type === 3 && "نساء"}
+                    {item.type === 4 && "الكل"}
                   </div>
                 </div>
               </div>

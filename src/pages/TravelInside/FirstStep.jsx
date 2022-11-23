@@ -28,15 +28,19 @@ const FirstStep = ({ oneEvent, setToggle, userOfLivre }) => {
           </div>
           <div
             className={
-              !oneEvent.gender === 1
-                ? "flex card-travel-content-gender family my-10"
-                : "flex card-travel-content-gender"
+              oneEvent.type === 1
+              ? "flex card-travel-content-gender"
+              : "flex card-travel-content-gender family my-10"
             }
           >
             <span className="flex-center">
               <FiUsers />
             </span>{" "}
-            {oneEvent.type === 1 ? "شباب" : "عائلات"}
+            {oneEvent.type === 1 && "شباب" }
+            {oneEvent.type === 2 && "عائلات"}
+            {oneEvent.type === 3 && "نساء"}
+            {oneEvent.type === 4 && "الكل"}
+            
           </div>
           <div className="travel-inside-left-price">
             <span>السعر</span>
