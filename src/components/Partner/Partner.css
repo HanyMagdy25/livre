@@ -6,12 +6,18 @@
 .partner .d-flex {
   flex-direction: column;
 }
+.partner-right{
+  width: 50%;
+}
+.partner-left{
+  width: 50%;
+}
 
 .partner h1 {
   color: #111110;
   font-weight: 700;
   font-size: 2.5rem;
-  color: var(--color-purple);
+  color: var(--color-black);
 }
 
 .partner p {
@@ -29,7 +35,7 @@
 }
 
 .partner img.img-fluid {
-  width: 546px;
+  width: 570px;
   object-fit: cover;
   object-position: center;
   height: 560px;
@@ -93,15 +99,21 @@
   }
   .partner-right {
     width: 100%;
-    padding: 10px;
+    padding: 10px 30px;
   }
   .partner-left {
     width: 100%;
     padding: 10px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
   }
   .partner img.img-fluid {
-    width: 100%;
+    /* width: 100%; */
     object-fit: cover;
+    width: 520px;
+    object-position: center;
+    height: 550px;
   }
 }
 /* ====== MOBILE ======== */

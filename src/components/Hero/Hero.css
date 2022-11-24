@@ -1,5 +1,5 @@
 .hero-section {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .hero-section img {
   width: 100%;
@@ -63,6 +63,15 @@
 
 /* ======== TABLET ======== */
 @media screen and (max-width: 990px) {
+  .hero-container {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-container > img{
+    height: 600px;
+    width: 95%;
+    border-radius: 30px;
+  }
   .hero-content {
     padding: 40px 40px;
   }
@@ -76,22 +85,30 @@
 }
 /* ======== Mobile ======== */
 @media screen and (max-width: 600px) {
+  .hero-container > img{
+    height: 520px;
+    width: 95%;
+    border-radius: 30px;
+  }
+  .hero-content-left > img{
+    display: none;
+  }
   .hero-content {
     padding: 12px 20px;
   }
   .hero-content-right h1 {
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1.4;
     /* width: 70%; */
   }
   .hero-content-right p {
-    font-size: 14px;
+    font-size: 18px;
+    margin-top: 8px;
   }
   .hero-content-right {
-    width: 200px;
-  }
-  .hero-content-right span {
-    padding: 6px;
+    width: 225px;
+    justify-content: center;
+    margin-right: 15px;
   }
   .hero-content-right span a {
     font-size: 20px;

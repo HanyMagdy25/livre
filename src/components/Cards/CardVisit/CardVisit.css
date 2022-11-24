@@ -6,11 +6,11 @@
 }
 .cardVisit:nth-child(1) {
   width: 49%;
-  max-height: 275px;
+  max-height: 260px;
 }
 .cardVisit.w-50 {
   width: 49%;
-  max-height: 265px;
+  max-height: 278px;
 }
 .bg-simi-dark{
   position: absolute;
@@ -70,9 +70,6 @@
 }
 /* ====== MOBILE ======== */
 @media screen and (max-width: 600px) {
-  .cardVisit {
-    width: 100%;
-  }
   .cardVisit:nth-child(1) {
     width: 100%;
   }

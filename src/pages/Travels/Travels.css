@@ -34,12 +34,27 @@
   gap: 2%;
 }
 
-/* ====== MOBILE ======== */
+/* ====== TABLET ======== */
 @media screen and (max-width: 990px) {
   .travels-filters {
     padding: 0 10px;
   }
   .travels-filters .filter-btns button {
     margin-bottom: 5px;
+  }
+  .travels-search-div > div {
+    width: 60%;
+  }
+}
+/* ====== MOBILE ======== */
+@media screen and (max-width: 600px) {
+  .travels-search-div > div {
+    width: 80%;
+  }
+  .cards-travels-div {
+    padding: 0 15px;
+  }
+  .travels-filters .filter-btns {
+    padding: 0 5px;
   }
 }

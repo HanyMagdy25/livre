@@ -81,13 +81,14 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                     <span className="flex-center">
                       <BsClock />
                     </span>{" "}
-                    {item.duration} أيام
+                    {item?.duration} ساعات{" "}
+                    {item?.daily > 0 && `${item?.daily} أيام`}
                   </div>
                   <div
                     className={
                       item.type === 1
-                      ? "flex card-travel-content-gender"
-                      : "flex card-travel-content-gender family"
+                        ? "flex card-travel-content-gender"
+                        : "flex card-travel-content-gender family"
                     }
                   >
                     <span className="flex-center">

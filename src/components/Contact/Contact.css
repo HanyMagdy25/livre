@@ -72,8 +72,27 @@ button.primary-btn {
   margin-top: 10px;
 }
 
+/* ====== Tablet ======== */
+@media screen and (max-width: 990px) {
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-container .contact-right {
+    width: 62%;
+  }
+  .contact-container .contact-left {
+    width: 100%;
+    padding: 0 62px;
+    margin-left: 0px;
+    margin-top: 39px;
+  }
+  .contact-form-textarea-div {
+    margin-top: 15px;
+  }
+}
 /* ====== MOBILE ======== */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .contact {
     margin-top: 10px;
     margin-bottom: 30px;

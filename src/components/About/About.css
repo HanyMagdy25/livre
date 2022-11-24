@@ -3,6 +3,7 @@
 }
 .about-container img {
   width: 100%;
+  object-fit: cover;
 }
 .about-content {
   position: absolute;

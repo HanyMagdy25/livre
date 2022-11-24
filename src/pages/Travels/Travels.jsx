@@ -8,7 +8,7 @@ import CardVisit from "../../components/Cards/CardVisit/CardVisit";
 import Spinner from "../../components/Spinner/Spinner";
 import { Link, useParams } from "react-router-dom";
 
-const Travels = ({ token, URL,userOfLivre }) => {
+const Travels = ({ token, URL, userOfLivre }) => {
   const param = useParams();
   const [catsNameApi, setCatsNameApi] = useState([]);
   // const [search, setSearch] = useState([]);
@@ -88,20 +88,22 @@ const Travels = ({ token, URL,userOfLivre }) => {
           <div className="travels-container container">
             {/* ========= Start Search Section ========== */}
             <div className="travels-search-div flex-center">
-              <div className="search-div">
-                <div className="search-div-item">
-                  <input
-                    type="text"
-                    placeholder="ابحث عن أي مدينة تريد"
-                    onChange={(e) => setSearchText(e.target.value)}
-                  />
-                  <span>
-                    <BsSearch />
-                  </span>
+              <div>
+                <div className="search-div">
+                  <div className="search-div-item">
+                    <input
+                      type="text"
+                      placeholder="ابحث عن أي مدينة تريد"
+                      onChange={(e) => setSearchText(e.target.value)}
+                    />
+                    <span>
+                      <BsSearch />
+                    </span>
+                  </div>
+                  <button className="btn btn-search" onClick={handleSearch}>
+                    بحث
+                  </button>
                 </div>
-                <button className="btn btn-search" onClick={handleSearch}>
-                  بحث
-                </button>
               </div>
             </div>
             {/* =========== Start Filters =========== */}
@@ -125,7 +127,12 @@ const Travels = ({ token, URL,userOfLivre }) => {
               ) : (
                 <div className="cards-travels-div">
                   {eventsApi?.map((item, index) => (
-                    <CardTravel item={item} key={index} token={token} userOfLivre={userOfLivre}/>
+                    <CardTravel
+                      item={item}
+                      key={index}
+                      token={token}
+                      userOfLivre={userOfLivre}
+                    />
                   ))}
                   {visits?.slice(0, 1)?.map((item, index) => (
                     <CardVisit item={item} key={index} type="w-50" />

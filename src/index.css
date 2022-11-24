@@ -24,7 +24,6 @@
   --unnamed-color-a256e2: #a256e2;
   --unnamed-color-6e6e6e: #6e6e6e;
   --unnamed-color-c8c6c6: #c8c6c6;
-  --unnamed-color-111110: #111110;
   --unnamed-color-8e8e8e: #8e8e8e;
   --unnamed-color-000000: #000000;
   --unnamed-color-f5f5f5: #f5f5f5;
@@ -41,7 +40,8 @@
   --unnamed-color-ebebeb: #ebebeb;
   --unnamed-color-f9b040: #f9b040;
   --unnamed-color-ebb45a: #ebb45a;
-  --unnamed-color-7539a5: #7539a5;
+  
+  --color-black: #111110;
   --color-white: #ffffff;
   --color-bg: #f6ecff;
   --color-purple: #7338a4;
@@ -73,14 +73,14 @@ h6 {
 .btn {
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 0.413rem;
+  border-radius: 10px;
   color: #212529;
   cursor: pointer;
   display: inline-block;
-  font-size: 0.875rem;
+  font-size: 1.02rem;
   font-weight: 400;
   line-height: 1.5;
-  padding: 0.563rem 1.563rem;
+  padding: 0.563rem 1.463rem;
   text-align: center;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,

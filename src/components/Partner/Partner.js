@@ -1,14 +1,16 @@
 import React from "react";
-// import CSS 
-import "./Partner.css"
+// import CSS
+import "./Partner.css";
 // import Images
 import tag from "../../assets/tag.png";
 import campaign from "../../assets/campaign.png";
 import increase from "../../assets/increase.png";
 import verify from "../../assets/verify.png";
 import services from "../../assets/services.png";
+import { useWindowInner } from "../../hooks/useWindowInner";
 
 const Partner = () => {
+  const { isMobile } = useWindowInner();
   return (
     <section className="partner" id="partner">
       <div className="container">
@@ -25,7 +27,7 @@ const Partner = () => {
               <div className="col-md-6 col-sm-6 col-12 partner-card">
                 <div className="feature">
                   <div className="icon-bg">
-                    <img src={campaign} alt="campaign" loading="lazy"/>
+                    <img src={campaign} alt="campaign" loading="lazy" />
                   </div>
                   <h5>إعلانات حصرية</h5>
                   <p>
@@ -49,7 +51,7 @@ const Partner = () => {
               <div className="col-md-6 col-sm-6 col-12 partner-card">
                 <div className="feature">
                   <div className="icon-bg">
-                    <img src={increase} alt="increase" loading="lazy"/>
+                    <img src={increase} alt="increase" loading="lazy" />
                   </div>
                   <h5>زيادة مبيعاتك</h5>
                   <p>
@@ -72,9 +74,16 @@ const Partner = () => {
               </div>
             </div>
           </div>
-          <div className="partner-left d-flex align-items-end justify-content-end">
-            <img className="img-fluid" src={services} alt="services" loading="lazy"/>
-          </div>
+          {!isMobile && (
+            <div className="partner-left d-flex align-items-end justify-content-end">
+              <img
+                className="img-fluid"
+                src={services}
+                alt="services"
+                loading="lazy"
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>

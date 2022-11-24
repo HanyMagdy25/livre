@@ -63,9 +63,9 @@
 }
 /* ====== TABLET ======== */
 @media screen and (max-width: 990px) {
-  .search-div-item {
+  /* .search-div-item {
     width: 300px;
-  }
+  } */
   .mostVisits-container {
     padding: 10px 15px;
   }
@@ -74,14 +74,25 @@
   }
   .searchImage-div img {
     width: 100%;
-    height: 120px;
+    height: 180px;
     object-fit: cover;
     border-radius: 15px;
+  }
+  .searchImage-content > div {
+    width: 60%;
+  }
+  .search-div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .search-div-item {
+    width: 100%;
   }
 }
 /* ====== MOBILE ======== */
 @media screen and (max-width: 600px) {
-  .search-div-item {
-    width: 200px;
+  .searchImage-div img {
+    height: 274px;
+    object-position: 85%;
   }
 }
