@@ -12,11 +12,30 @@ const Travels = ({ token, URL, userOfLivre }) => {
   const param = useParams();
   const [catsNameApi, setCatsNameApi] = useState([]);
   // const [search, setSearch] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  // const [searchText, setSearchText] = useState("");
   const [eventsApi, setEventsApi] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category_ID, setCategory_ID] = useState(14);
   const [dataFromOneCat, setDataFromOneCat] = useState([]);
+  // Test New Search
+  const [newSearch, setNewSearch] = useState({
+    keyword: "",
+    Eventfilters: {
+      category_id: 14,
+    },
+  });
+
+  useEffect(() => {
+    setNewSearch((prev) => {
+      return {
+        ...prev,
+        // keyword: userOfLivre?.id,
+        Eventfilters: {
+          category_id: category_ID,
+        },
+      };
+    });
+  }, [category_ID]);
 
   // To Fetch Categories API
   useEffect(() => {
@@ -36,7 +55,7 @@ const Travels = ({ token, URL, userOfLivre }) => {
 
     fetchDataFromAllCat();
   }, [URL, category_ID, param.id, token]);
-  // console.log("555", catsNameApi?.data?.categories[0]?.id);
+
   // To Fetch One Category API
   useEffect(() => {
     const fetchDataFromOneCat = async () => {
@@ -54,17 +73,14 @@ const Travels = ({ token, URL, userOfLivre }) => {
       setDataFromOneCat(newData);
       setEventsApi(newData?.data?.events);
       setLoading(false);
-      // setActiveCat(param.id)
-      // setLoadingOneCat(false)
     };
-
     fetchDataFromOneCat();
   }, [URL, category_ID, param.id, token]);
 
-  // To Search => API
+  // Search Bar  
   const handleSearch = (e) => {
     e.preventDefault();
-    const raw = { searchText };
+    const raw = { newSearch };
     fetch(`${URL}/api/v1/events/search`, {
       method: "POST",
       headers: {
@@ -75,7 +91,6 @@ const Travels = ({ token, URL, userOfLivre }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // setSearch(data);
         setEventsApi(data?.data?.events);
       });
   };
@@ -94,7 +109,7 @@ const Travels = ({ token, URL, userOfLivre }) => {
                     <input
                       type="text"
                       placeholder="ابحث عن أي مدينة تريد"
-                      onChange={(e) => setSearchText(e.target.value)}
+                      onChange={(e) => setNewSearch({...newSearch,keyword:e.target.value})}
                     />
                     <span>
                       <BsSearch />

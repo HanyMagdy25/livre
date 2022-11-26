@@ -15,6 +15,9 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
   const [client_id, setClient_id] = useState(null);
   const [event_id, setEvent_id] = useState(null);
   console.log(item);
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+  }
   // To Search => API
   useEffect(() => {
     setClient_id(userOfLivre?.id);
@@ -73,7 +76,7 @@ const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
                   <span className="flex-center">
                     <IoLocationOutline />
                   </span>{" "}
-                  {item.location}{" "}
+                  {truncate(item.location,25)}{" "}
                 </div>
                 <hr />
                 <div className="flex">

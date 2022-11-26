@@ -39,6 +39,9 @@ const TravelInside = ({ token, userOfLivre }) => {
   const [tax, setTax] = useState([]);
   const [conditions, setConditions] = useState([]);
   const param = useParams();
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+  }
   // const userLoggedin = false
   // const oneTravel = travelsData.find((a) => a.id === param.id);
   // /////////
@@ -133,15 +136,6 @@ const TravelInside = ({ token, userOfLivre }) => {
                         </span>
                       </div>
                     )}
-                    {/* <div
-                      className="flex rate"
-                      onClick={() => setPopupFeedback(true)}
-                    >
-                      <span className="flex-center">{oneEvent[0]?.rate}</span>
-                      <span className="flex-center">
-                        <BsStar />
-                      </span>
-                    </div> */}
                   </div>
 
                   <div className="flex card-travel-content-city">
@@ -149,7 +143,8 @@ const TravelInside = ({ token, userOfLivre }) => {
                     <span className="flex-center">
                       <IoLocationOutline />
                     </span>{" "}
-                    {oneEvent[0]?.location}{" "}
+                    {truncate(oneEvent[0]?.location,60)}{" "}
+                    
                   </div>
 
                   <p>{oneEvent[0]?.description}</p>
@@ -197,6 +192,7 @@ const TravelInside = ({ token, userOfLivre }) => {
                       setCount={setCount}
                       countDis={countDis}
                       setCountDis={setCountDis}
+                      token={token}
                     />
                   )}
 
