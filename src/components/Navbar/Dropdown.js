@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoTicketOutline } from "react-icons/io5";
 import { BsBookmark } from "react-icons/bs";
+import { MdLogout } from "react-icons/md";
 
 const navProfile = [
   {
@@ -32,11 +33,16 @@ const Dropdown = () => {
       <ul onClick={() => setDrop(!drop)} className="dropdown-main">
         {navProfile.map((item, index) => (
           <li key={index}>
-            <Link to={item.path} onClick={() => setDrop(!drop)} >
+            <Link to={item.path} onClick={() => setDrop(!drop)}>
               <span className="flex-center">{item.icon}</span> {item.title}
             </Link>
           </li>
         ))}
+        <li>
+          <a href="/" onClick={()=> window.localStorage.removeItem('user-livre')}>
+            <span className="flex-center"><MdLogout/></span> تسجيل الخروج
+          </a>
+        </li>
       </ul>
     </>
   );

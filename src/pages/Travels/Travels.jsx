@@ -24,6 +24,7 @@ const Travels = ({ token, URL, userOfLivre }) => {
       category_id: 14,
     },
   });
+  console.log(newSearch);
 
   useEffect(() => {
     setNewSearch((prev) => {
@@ -84,7 +85,7 @@ const Travels = ({ token, URL, userOfLivre }) => {
     fetch(`${URL}/api/v1/events/search`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "X-Authorization": `${token}`,
       },
       body: JSON.stringify(raw),

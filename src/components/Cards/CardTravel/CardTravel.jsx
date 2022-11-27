@@ -14,7 +14,7 @@ const URL = "https://livre.softwarecloud2.com";
 const CardTravel = ({ item, token, userOfLivre, widthThree }) => {
   const [client_id, setClient_id] = useState(null);
   const [event_id, setEvent_id] = useState(null);
-  console.log(item);
+  // console.log(item);
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
   }
