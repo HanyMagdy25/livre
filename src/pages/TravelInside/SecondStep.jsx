@@ -20,6 +20,13 @@ const SecondStep = ({
   // const [nameOfUser, setNameOfUser] = useState("");
   // const [ageOfUser, setAgeOfUser] = useState("");
   // const [phoneOfUser, setPhoneOfUser] = useState("");
+  const [clients, setClients] = useState([
+    {
+      name: "afsd",
+      age: "15",
+      phone: "011111"
+    }
+  ]);
   const [firstUser, setFirstUser] = useState({
     name: "",
     age: "",
@@ -45,7 +52,6 @@ const SecondStep = ({
     amount: "",
     number: "",
     discount: "",
-    clients: [],
   });
   useEffect(() => {
     setDataToSend((prev) => {
@@ -55,28 +61,34 @@ const SecondStep = ({
         event_id: oneEvent?.id,
         amount: oneEvent?.price,
         number: count,
-        discount:0,
+        discount: 0,
         clients: [firstUser],
       };
     });
-  }, [count, firstUser,secondUser,thirdUser, oneEvent?.id, oneEvent?.price, userOfLivre?.id]);
+  }, [count, firstUser, secondUser, thirdUser, oneEvent?.id, oneEvent?.price, userOfLivre?.id]);
 
-  console.log("dataToSend", dataToSend);
+  console.log("clients", clients);
 
   const handleChange = (e) => {
-    const name = e.target.name; //it is the name of that input
-    const value = e.target.value; //value of that input
-    setFirstUser((prev) => {
-      return { ...prev, [name]: value };
+    e.preventDefault();
+
+    const index = e.target.id;
+    setClients(s => {
+      const newArr = s.slice();
+      console.log(e.target.id);
+      newArr[index].name = e.target.name == 'name' ? e.target.value : newArr[index].name;
+      newArr[index].age = e.target.name == 'age' ? e.target.value : newArr[index].age;
+      newArr[index].phone = e.target.name == 'phone' ? e.target.value : newArr[index].phone;
+      return newArr;
     });
-    // setDataToSend((prev) => {
-    //   return {
-    //     ...prev,
-    //     clients: [firstUser],
-    //   };
-    // });
-    // setAllUsers(allUsers.push(firstUser));
   };
+ 
+  const removeClient = (index) => {
+    setClients([
+      ...clients.slice(0, index),
+      ...clients.slice(index + 1)
+    ]);
+  }
 
   // useEffect(() => {
   //   setAllUsers(allUsers.push({name:"55"}));
@@ -89,7 +101,7 @@ const SecondStep = ({
   // console.log("allUsers", allUsers);
   const handlePaid = (e) => {
     e.preventDefault();
-    const blog = {dataToSend}
+    const blog = { dataToSend }
     fetch(`${URL_HOST}/api/v1/reservation/reserve`, {
       method: "POST",
       headers: {
@@ -101,7 +113,7 @@ const SecondStep = ({
       .then((res) => res.json())
       .then((data) => {
 
-        console.log("data",data);
+        console.log("data", data);
       });
   };
   // const handleCoupon = (e) => {
@@ -130,7 +142,7 @@ const SecondStep = ({
         </span>
       </div>
       <div className="coupon">
-        <input type="text" onChange={(e)=>setCoupon(e.target.value)}/>
+        <input type="text" onChange={(e) => setCoupon(e.target.value)} />
         <button type="button" >تطبيق</button>
       </div>
       <div className="second-step-count">
@@ -139,7 +151,10 @@ const SecondStep = ({
           <button
             className="flex-center"
             disabled={count > 7}
-            onClick={() => setCount(count + 1)}
+            onClick={() => { 
+              setClients([...clients, { name: "", age: "", phone: "" }]) 
+              setCount(count + 1)
+            }}
           >
             <AiOutlinePlus />
           </button>
@@ -147,74 +162,87 @@ const SecondStep = ({
           <button
             className="flex-center"
             disabled={count < 2}
-            onClick={() => setCount(count - 1)}
+            onClick={() => {
+              removeClient(clients.length - 1)
+              setCount(count - 1)
+            }}
           >
             <AiOutlineMinus />
           </button>
         </div>
       </div>
       <div className="second-step-inputs">
-        <h2>الفرد الأول</h2>
-        <div className="input-div">
-          <input
-            type="text"
-            placeholder="الأسم"
-            // value={nameOfUser}
-            // onChange={(e) => setNameOfUser(e.target.value)}
-            name="name"
-            onChange={handleChange}
-            value={firstUser.name}
-            // value={inputs.nameOfUser || ""}
-            // onChange={handleChange}
-          />
-          <span className="flex-center">
-            <AiOutlineUser />
-          </span>
-        </div>
-        <div className="input-div">
-          <input
-            type="text"
-            placeholder="السن"
-            // onChange={(e) => setAgeOfUser(e.target.value)}
-            // value={inputs.ageOfUser || ""}
-            // onChange={handleChange}
-            name="age"
-            onChange={handleChange}
-            value={firstUser.age}
-          />
-          <span className="flex-center">
-            <BsCalendarMinus />
-          </span>
-        </div>
-        <div className="input-div">
-          <input
-            type="text"
-            placeholder="رقم الهاتف"
-            // value={phoneOfUser}
-            // onChange={(e) => setPhoneOfUser(e.target.value)}
-            // value={inputs.phoneOfUser || ""}
-            // onChange={handleChange}
-            name="phone"
-            onChange={handleChange}
-            value={firstUser.phone}
-          />
-          <span className="flex-center">
-            <BsCalendarMinus />
-          </span>
-        </div>
-        <div className="flex-justify check-div">
-          <span>هل انت من ذوي الإحتياجات الخاصه؟</span>
-          <input
-            type="checkbox"
-            className="flex-center"
-            onChange={(e) =>
-              e.target.checked === true
-                ? setCountDis(countDis + 1)
-                : setCountDis(countDis - 1)
-            }
-          />
-        </div>
-        {count > 1 && (
+        {clients.map((item, i) => {
+          return (
+            <div key={i}>
+              <h2>الفرد الأول</h2>
+              <div className="input-div">
+                <input
+                  type="text"
+                  placeholder="الأسم"
+                  name="name"
+                  id={i}
+                  // value={nameOfUser}
+                  // onChange={(e) => setNameOfUser(e.target.value)}
+                  onChange={handleChange}
+                  value={item.name}
+                // value={inputs.nameOfUser || ""}
+                // onChange={handleChange}
+                />
+                <span className="flex-center">
+                  <AiOutlineUser />
+                </span>
+              </div>
+              <div className="input-div">
+                <input
+                  type="text"
+                  placeholder="السن"
+                  id={i}
+                  // onChange={(e) => setAgeOfUser(e.target.value)}
+                  // value={inputs.ageOfUser || ""}
+                  // onChange={handleChange}
+                  name="age"
+                  onChange={handleChange}
+                  value={item.age}
+                />
+                <span className="flex-center">
+                  <BsCalendarMinus />
+                </span>
+              </div>
+              <div className="input-div">
+                <input
+                  type="text"
+                  placeholder="رقم الهاتف"
+                  id={i}
+                  // value={phoneOfUser}
+                  // onChange={(e) => setPhoneOfUser(e.target.value)}
+                  // value={inputs.phoneOfUser || ""}
+                  // onChange={handleChange}
+                  name="phone"
+                  onChange={handleChange}
+                  value={item.phone}
+                />
+                <span className="flex-center">
+                  <BsCalendarMinus />
+                </span>
+              </div>
+              <div className="flex-justify check-div">
+                <span>هل انت من ذوي الإحتياجات الخاصه؟</span>
+                <input
+                  type="checkbox"
+                  className="flex-center"
+                  onChange={(e) =>
+                    e.target.checked === true
+                      ? setCountDis(countDis + 1)
+                      : setCountDis(countDis - 1)
+                  }
+                />
+              </div>
+            </div>
+          );
+        })}
+
+        {/* {count > 1 && (
           <InputField
             numOfuser="الفرد الثانى"
             countDis={countDis}
@@ -266,11 +294,11 @@ const SecondStep = ({
             countDis={countDis}
             setCountDis={setCountDis}
           />
-        )}
+        )} */}
       </div>
       <div className="travel-inside-left-price">
         <span>السعر</span>
-        <h2>{oneEvent?.price} ريال</h2>
+        <h2>{oneEvent?.price * count} ريال</h2>
       </div>
       <div>
         <button
